@@ -1,0 +1,89 @@
+nav {
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+}
+
+.logo {
+  width: 250px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.menus .items {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.menus li {
+  cursor: pointer;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #6d4c41;
+  position: relative;
+}
+
+.menus li:hover {
+  color: #a1887f;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+/* กล่องเมนูที่เลื่อนลง */
+.dropdown-menu {
+  position: absolute;
+  top: 140%;
+  right: 10%;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  min-width: 160px;
+  padding: 0.5rem 0;
+  z-index: 10;
+
+  /* ซ่อนเมนูตอนเริ่มต้น */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-5px);
+  transition: all 0.25s ease;
+}
+
+/* แสดงเมนูเมื่อ hover ที่ dropdown หรือในเมนูเอง */
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* รายการใน dropdown */
+.dropdown-menu li {
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  color: #6d4c41;
+  transition: background 0.3s ease;
+}
+
+.dropdown-menu li:hover {
+  background-color: #f3f3f3;
+  color: #a1887f;
+}

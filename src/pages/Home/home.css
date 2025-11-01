@@ -1,0 +1,130 @@
+.container{
+  width: 100%;
+  margin-top: 100px;
+  overflow: hidden;
+  
+}
+
+.container img{
+  width: 99.1vw;
+  height: 60vh;
+  object-fit: cover;
+  display: block;
+
+}
+
+.recommend-menu, .best-sell{
+  margin: 0 6rem;
+  margin-top: 100px;
+}
+
+.recommend-menu .text-rec, .best-sell .text-best{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.text-rec h1, .text-best h1{
+  font-size: 2.5rem;
+}
+
+.text-rec p,.text-best p{
+  font-size: 400;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.text-rec p:hover, .text-best p:hover{
+  text-decoration: underline;
+  color: var(--hover-color);
+}
+.header-card, .best-menu{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.rec-card, .best-card{
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  width: 300px;
+ transition: all 0.3s ease;
+}
+
+.rec-card:hover ,.best-card:hover{
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.rec-card img ,.best-card img{
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+.detail-card, .detail-best{
+  padding: 1rem;
+}
+.detail-card .name-price, .detail-best .name-price{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.detail-card h1, .detail-best h1{
+  color: var(--text-color);
+  font-size: 1.25rem;
+  margin: 0.2rem 0;
+  font-weight: 500;
+}
+.detail-card h2, .detail-best h2{
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--text-color);
+  margin: 0.2rem 0;
+}
+.detail-card p, .detail-best p{
+  font-size: 1rem;
+  margin: 0.2rem 0 1rem 0;
+}
+.detail-card .total, .detail-best .total{
+  display: flex;
+  justify-content: end;
+  margin-right: 8px;
+  gap: 0.5rem;
+  align-items: center;
+  
+}
+.total .num{
+  cursor: none;
+}
+.total p {
+ font-size: 1.1rem;
+ cursor: pointer ;
+  
+}
+
+.detail-card button ,.detail-best button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.5rem 0;
+  background-color: var(--bg-color);
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}
+.detail-card button:hover ,.detail-best button:hover{
+  background-color: var(--hover-color);
+  border: none;
+}
+
+.detail-card button:active ,.detail-best button:active{
+  border: none;
+}
