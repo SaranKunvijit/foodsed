@@ -7,7 +7,7 @@
   color-scheme: light dark;
   --text-color: #6d4c41;
   --hover-color: #a1887f;
-  --bg-color: #6d4c41;
+  --bg-color: #d7ccc8;
   background-color: #242424;
 
   font-synthesis: none;
@@ -27,7 +27,7 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
+  /* display: flex; */
   color: #6d4c41;
   /* place-items: center; */
   min-width: 320px;

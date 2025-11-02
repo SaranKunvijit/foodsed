@@ -1,43 +1,54 @@
-.container{
+.container {
   width: 100%;
-  margin-top: 100px;
   overflow: hidden;
-  
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
 }
 
-.container img{
-  width: 99.1vw;
+.container .img-head {
+  width: 50vw;
   height: 60vh;
   object-fit: cover;
   display: block;
-
+  position: relative;
+  z-index: 1;
+  margin-top: 13%;
+  border-radius: 10px;
+  
 }
 
-.recommend-menu, .best-sell{
+.recommend-menu,
+.best-sell {
   margin: 0 6rem;
   margin-top: 100px;
 }
 
-.recommend-menu .text-rec, .best-sell .text-best{
+.recommend-menu .text-rec,
+.best-sell .text-best {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.text-rec h1, .text-best h1{
+.text-rec h1,
+.text-best h1 {
   font-size: 2.5rem;
 }
 
-.text-rec p,.text-best p{
+.text-rec p,
+.text-best p {
   font-size: 400;
   cursor: pointer;
   transition: all 0.3s ease;
 }
-.text-rec p:hover, .text-best p:hover{
+.text-rec p:hover,
+.text-best p:hover {
   text-decoration: underline;
   color: var(--hover-color);
 }
-.header-card, .best-menu{
+.header-card,
+.best-menu {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
@@ -45,74 +56,82 @@
   padding: 2rem;
 }
 
-.rec-card, .best-card{
+.rec-card,
+.best-card {
   background-color: white;
   border-radius: 1rem;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   overflow: hidden;
   width: 300px;
- transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
-.rec-card:hover ,.best-card:hover{
+.rec-card:hover,
+.best-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
-.rec-card img ,.best-card img{
+.rec-card img,
+.best-card img {
   width: 100%;
   height: 200px;
   object-fit: cover;
 }
-.detail-card, .detail-best{
+.detail-card,
+.detail-best {
   padding: 1rem;
 }
-.detail-card .name-price, .detail-best .name-price{
+.detail-card .name-price,
+.detail-best .name-price {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
 }
-.detail-card h1, .detail-best h1{
+.detail-card h1,
+.detail-best h1 {
   color: var(--text-color);
   font-size: 1.25rem;
   margin: 0.2rem 0;
   font-weight: 500;
 }
-.detail-card h2, .detail-best h2{
+.detail-card h2,
+.detail-best h2 {
   font-size: 1rem;
   font-weight: 400;
   color: var(--text-color);
   margin: 0.2rem 0;
 }
-.detail-card p, .detail-best p{
+.detail-card p,
+.detail-best p {
   font-size: 1rem;
   margin: 0.2rem 0 1rem 0;
 }
-.detail-card .total, .detail-best .total{
+.detail-card .total,
+.detail-best .total {
   display: flex;
   justify-content: end;
   margin-right: 8px;
   gap: 0.5rem;
   align-items: center;
-  
 }
-.total .num{
+.total .num {
   cursor: none;
 }
 .total p {
- font-size: 1.1rem;
- cursor: pointer ;
-  
+  font-size: 1.1rem;
+  cursor: pointer;
 }
 
-.detail-card button ,.detail-best button{
+.detail-card button,
+.detail-best button {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
   width: 100%;
   padding: 0.5rem 0;
-  background-color: var(--bg-color);
+  background-color: var(--text-color);
   color: #fff;
   border: none;
   border-radius: 0.5rem;
@@ -120,11 +139,70 @@
   font-weight: 500;
   transition: background-color 0.3s;
 }
-.detail-card button:hover ,.detail-best button:hover{
+.detail-card button:hover,
+.detail-best button:hover {
   background-color: var(--hover-color);
   border: none;
 }
 
-.detail-card button:active ,.detail-best button:active{
+.detail-card button:active,
+.detail-best button:active {
   border: none;
+}
+
+.catagory-menu {
+  padding: 2rem;
+  margin-top: 7%;
+  
+}
+.catagory-menu .text-class {
+  align-items: center;
+  text-align: center;
+}
+.catagory-grid {
+  display: flex;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  justify-content: center;
+}
+.bg-catagory {
+  position: relative;
+  height: 200px;
+  width: 300px;
+  border-radius: 16px;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+.bg-catagory:hover {
+  transform: scale(1.05);
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0));
+  color: white;
+}
+.overlay h1 {
+  font-size: 32px;
+  margin: 5p;
+}
+.overlay p {
+  font-size: 16px;
+  margin: 0;
+}
+
+.best-sells{
+display: flex;
+}
+.best-sells .img-sells img{
+  width: 500px;
+  height: 350px;
+  border-radius: 15px;
 }
