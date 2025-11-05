@@ -3,7 +3,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: column; 
-  align-items: center;
+  /* align-items: center; */
 }
 
 .container .img-head {
@@ -15,6 +15,7 @@
   z-index: 1;
   margin-top: 13%;
   border-radius: 10px;
+  margin-left: 28rem;
   
 }
 
@@ -29,6 +30,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 2px solid var(--bg-color);
 }
 
 .text-rec h1,
@@ -158,6 +160,9 @@
 .catagory-menu .text-class {
   align-items: center;
   text-align: center;
+  border-bottom: 2px solid var(--bg-color);
+  padding: 2.5rem 0;
+  margin-bottom: 2%;
 }
 .catagory-grid {
   display: flex;
@@ -200,9 +205,46 @@
 
 .best-sells{
 display: flex;
+justify-content: center;
+gap: 5rem;
+margin-top: 8rem;
+padding: 6rem;
+background-color: var(--bg-color);
+align-items: center;
 }
 .best-sells .img-sells img{
-  width: 500px;
-  height: 350px;
+  width: 600px;
+  height: 400px;
   border-radius: 15px;
+}
+
+.contact{
+  display: flex;
+  padding: 3rem;
+  justify-content: space-between;
+  background-color: var(--text-color);
+  align-items: center;
+  color: white;
+  margin-top: 8%;
+  
+}
+
+.contact .contact-res{
+  display: flex;
+  gap: 5rem;
+
+}
+
+.contact-res .address{
+  width: 300px;
+}
+.con-res p{
+  cursor: pointer;
+}
+.con-res p:hover{
+  text-decoration: underline;
+}
+
+.decline , .increse{
+  cursor: pointer;
 }

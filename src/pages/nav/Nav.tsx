@@ -37,6 +37,7 @@ function Nav() {
         <li className="dropdown">
           <div className="dropdown-btn"><User /> User</div>
           <ul className="dropdown-menu">
+            <li><User /> Account</li>
             <li><Settings /> Settings</li>
             <li><LogOut /> Logout</li>
           </ul>
