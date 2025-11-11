@@ -1,11 +1,23 @@
-nav {
+nav{
+  transition: all 0.3s ease-in-out;
+}
+.nav-home {
   width: 100%;
   padding-bottom: 20%;
   box-sizing: border-box;
-  background-color: var(--bg-color);
+  background-color: var(--bg-color); 
   position: absolute;
-  z-index: 1;
-  
+  z-index: 0;
+  transition: all 0.4s ease-in-out;
+}
+
+/* Nav สำหรับหน้าอื่น */
+.nav-default {
+  width: 100%;
+  padding:  0;
+  position: relative;
+  z-index: 3;
+  background-color: var(--bg-color);
 }
 
 .nav-container {
@@ -14,7 +26,6 @@ nav {
   padding: 1.5rem 0;
   display: flex;
   justify-content: space-between;
-
   align-items: center;
 }
 .logos{
@@ -36,7 +47,7 @@ nav {
   align-items: center;
 }
 
-.menus li {
+.menus li a,.dropdown-btn{
   cursor: pointer;
   font-weight: 500;
   display: flex;
@@ -45,7 +56,7 @@ nav {
   color: var(--text-color);
 }
 
-.menus li:hover {
+.menus li a:hover,.dropdown-btn:hover {
   color: var(--hover-color);
 }
 

@@ -10,43 +10,48 @@ import {
   PizzaIcon,
   Home,
 } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 
 function Nav() {
+  const location = useLocation();
+
+  // ตรวจสอบว่าตอนนี้อยู่หน้า Home หรือไม่
+  const isHome = location.pathname === "/";
+
   return (
-    <nav>
-  <div className="nav-container">
-    {/* เมนูซ้าย */}
-    <div className="menus">
-      <ul className="items">
-        <li><Home /> Home</li>
-        <li><PizzaIcon /> Menu</li>
-        <li><UtensilsCrossed /> Table</li>
-        <li><ClipboardList /> Manage</li>
-      </ul>
-    </div>
-
-    {/* โลโก้กลาง */}
-    <div className="logos">
-      <img src={logo} alt="logo" className="logo" />
-    </div>
-
-    {/* เมนูขวา */}
-    <div className="menus">
-      <ul className="items">
-        <li><ShoppingCart /> Cart</li>
-        <li className="dropdown">
-          <div className="dropdown-btn"><User /> User</div>
-          <ul className="dropdown-menu">
-            <li><User /> Account</li>
-            <li><Settings /> Settings</li>
-            <li><LogOut /> Logout</li>
+    <nav className={isHome ? "nav-home" : "nav-default"}>
+      <div className="nav-container">
+        {/* เมนูซ้าย */}
+        <div className="menus">
+          <ul className="items">
+            <li><Link to="/"><Home /> Home</Link></li>
+            <li><Link to="/menu"><PizzaIcon /> Menu</Link></li>
+            <li><Link to="/tables"><UtensilsCrossed /> Table</Link></li>
+            <li><Link to="/manage"><ClipboardList /> Manage</Link></li>
           </ul>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+        </div>
 
+        {/* โลโก้กลาง */}
+        <div className="logos">
+          <img src={logo} alt="logo" className="logo" />
+        </div>
+
+        {/* เมนูขวา */}
+        <div className="menus">
+          <ul className="items">
+            <li><Link to="/cart"><ShoppingCart /> Cart</Link></li>
+            <li className="dropdown">
+              <div className="dropdown-btn"><User /> User</div>
+              <ul className="dropdown-menu">
+                <li><Link to="/user"><User /> Account</Link></li>
+                <li><Link to="/settings"><Settings /> Settings</Link></li>
+                <li><Link to="/logout"><LogOut /> Logout</Link></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
   );
 }
 

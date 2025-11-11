@@ -46,7 +46,7 @@ function Home() {
       ))
     } else if(type === 'bestSellers'){
       setBestSellers((prev) => prev.map((menu) => 
-      menu.id === id && menu.total> 1 ? {...menu, total:menu.total}: menu
+      menu.id === id && menu.total> 1 ? {...menu, total:menu.total -1}: menu
       ))
     }
   } 
@@ -97,7 +97,7 @@ function Home() {
               <div className="detail-card">
                 <div className="name-price">
                   <h1>{menu.name}</h1>
-                  <h2>{menu.price}</h2>
+                  <h2>{menu.price} ฿</h2>
                 </div>
 
                 <div className="total">
@@ -128,7 +128,7 @@ function Home() {
               <div className="detail-best">
                 <div className="name-price">
                   <h1>{menu.name}</h1>
-                  <h2>{menu.price}</h2>
+                  <h2>{menu.price} ฿</h2>
                 </div>
                 <div className="total">
                   <p className="decline" onClick={() => handleDecline(menu.id , 'bestSellers')}>-</p>
