@@ -1,34 +1,53 @@
 import React, { useState } from 'react'
 import './manage.css'
+import { Camera } from 'lucide-react'
+import ManageHome from './ManagePage/ManageHome'
+import ManageTable from './ManagePage/ManageTable'
+import ManageFoods from './ManagePage/ManageFoods'
 function Manage() {
 
   const [preview, setPreview] = useState<string | null>(null)
-  const handleImageChange = (e:React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
-    if(file){
-      const ImageURL = URL.createObjectURL(file)
-      setPreview(ImageURL)
+  const [activeTab, setActiveTab] = useState<'home' | 'table' | 'foods'>('home')
+ 
+
+  const HeadersText = () => {
+    switch (activeTab) {
+      case 'home':
+        return { title: 'Manage Home', subtitle: 'จัดการหน้าหลัก' }
+      case 'table':
+        return { title: 'Manage Table', subtitle: 'จัดการโต๊ะ' }
+      case 'foods':
+        return { title: 'Manage Foods', subtitle: 'จัดการรายการอาหาร' }
     }
   }
+
+  const renderComponent = () => {
+    switch (activeTab) {
+      case 'home': return <ManageHome />
+      case 'table': return <ManageTable />
+      case 'foods': return <ManageFoods />
+    }
+  }
+  const headerText = HeadersText()
   return (
     <div className='containers'>
       <div className="text-headers">
-          <h1>Manage Data</h1>
-          <h2>จัดการข้อมูล</h2>
+      <div className="text-manage">
+          <h1>{headerText.title}</h1>
+          <h2>{headerText.subtitle}</h2>
+        </div>
+        <div className="menus-manage">
+          <ul>
+            <li onClick={() => setActiveTab('home')} className={activeTab === 'home' ? 'active' : ''}>จัดการหน้าหลัก</li>
+            <li onClick={() => setActiveTab('table')} className={activeTab === "table" ? 'active' : ''}>โต๊ะ</li>
+            <li onClick={() => setActiveTab('foods')} className={activeTab === 'foods' ? 'active' : ''}>จัดการอาหาร</li>
+          </ul>
+        </div>
+
       </div>
-    <div className="image-headers">
-      <label htmlFor="upload" className='upload-btn'>เลือกรูปภาพ</label>
-      <input type="file" id='upload' accept='image/*' hidden  onChange={handleImageChange}/>
-     
-     <div className="preview-box">
-      {preview ? (
-        <img src={preview} alt="" className='img-preview' />
-      ) : (
-        <p className='no-img'>ยังไม่มีรูปภาพ</p>
-      )}
-     </div>
-     
-    </div>
+      <div className="content-area">
+        {renderComponent()}
+      </div>
     </div>
   )
 }
