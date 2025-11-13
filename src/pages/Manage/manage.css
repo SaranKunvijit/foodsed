@@ -28,6 +28,7 @@
 }
 .menus-manage ul li{
     list-style: none;
+    position: relative;
     cursor: pointer;
     transition: all 0.4s ease;
     font-size: 17px;
@@ -35,6 +36,26 @@
 }
 .menus-manage ul li:hover{
     color: var(--hover-color);
+}
+.menus-manage ul li::after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: var(--bg-color);
+    transition: width 0.3s ease;
+}
+
+.menus-manage ul li:hover::after,
+.menus-manage ul li.active::after {
+  width: 100%;
+}
+
+.menus-manage ul li.active{
+    color: var(--hover-color);
+    transform: translateY(-5px);
 }
 
 .upload-headers{
@@ -58,7 +79,7 @@
     background-color: var(--hover-color);
 }
 
-.image-headers {
+.image-headers, .image-rec {
     margin-top: 2rem;
     display: flex;
     flex-direction: row;
@@ -104,12 +125,12 @@
     align-items: center;
     color: var(--hover-color);
 }
-.text-uploadheader h1{
+.text-uploadheader h1, .image-rec h1{
  font-size: 20px;
  font-weight: 500;
  
 }
-.text-uploadheader h2{
+.text-uploadheader h2 , .image-rec h2   {
     font-size: 14px;
     font-weight: 300;
     color: var(--hover-color);

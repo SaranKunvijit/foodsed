@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import './manage.css'
-import { Camera } from 'lucide-react'
+
 import ManageHome from './ManagePage/ManageHome'
 import ManageTable from './ManagePage/ManageTable'
 import ManageFoods from './ManagePage/ManageFoods'
 function Manage() {
 
-  const [preview, setPreview] = useState<string | null>(null)
+
   const [activeTab, setActiveTab] = useState<'home' | 'table' | 'foods'>('home')
  
 
