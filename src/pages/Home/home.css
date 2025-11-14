@@ -147,9 +147,9 @@
   border: none;
 }
 
-.detail-card button:active,
-.detail-best button:active {
-  border: none;
+.detail-card button:focus,
+.detail-best button:focus {
+  outline: none;
 }
 
 .catagory-menu {

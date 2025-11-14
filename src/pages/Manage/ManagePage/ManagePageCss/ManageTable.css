@@ -1,0 +1,12 @@
+.all-table {
+    background-color: var(--bg-color);
+    width: 200px;
+    padding: 1rem 2.5rem;
+    margin-top: 30px;
+    border-radius: 20px;
+    box-shadow: 1px 4px 15px rgba(0, 0, 0, 0.25);
+}
+.all-table h1{
+    font-size: 24px;
+    
+}

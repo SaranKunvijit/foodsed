@@ -1,5 +1,6 @@
 import { Camera, ImagePlus } from 'lucide-react'
 import React, { useId, useState, type FC } from 'react'
+import './ImageUploads.css'
 
 type ImageUploadsComponentProps = {
   id?: string   // ✅ เพิ่ม id ที่ส่งจาก parent ได้
@@ -9,8 +10,8 @@ type ImageUploadsComponentProps = {
 
 const ImageUploads: FC<ImageUploadsComponentProps> = ({ id, label = "เลือกรูปภาพ", onImageChange }) => {
   const [preview, setPreview] = useState<string | null>(null)
-  const generatedId = useId()                // ✅ id เฉพาะแต่ละ component
-  const inputId = id || generatedId          // ✅ ใช้ id ที่ส่งมา หรือสร้างใหม่ถ้าไม่มี
+  const generatedId = useId()               
+  const inputId = id || generatedId          
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
@@ -38,9 +39,9 @@ const ImageUploads: FC<ImageUploadsComponentProps> = ({ id, label = "เลื�
       </div>
 
       <div className="btn-upload">
-        {/* ✅ label ชี้ไปที่ input เฉพาะ */}
+      
         <label htmlFor={inputId} className="upload-btn">
-          <Camera size={18} style={{ marginRight: 8 }} />
+          <ImagePlus size={18} style={{ marginRight: 8 }} />
           {label}
         </label>
 
