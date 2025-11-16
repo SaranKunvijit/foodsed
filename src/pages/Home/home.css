@@ -2,7 +2,7 @@
   width: 100%;
   overflow: hidden;
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   /* align-items: center; */
 }
 
@@ -16,7 +16,7 @@
   margin-top: 13%;
   border-radius: 10px;
   margin-left: 28rem;
-  
+  box-shadow: 1px 8px 18px rgba(0, 0, 0, 0.9);
 }
 
 .recommend-menu,
@@ -62,7 +62,7 @@
 .best-card {
   background-color: white;
   border-radius: 1rem;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.45);
   overflow: hidden;
   width: 300px;
   transition: all 0.3s ease;
@@ -70,7 +70,7 @@
 
 .rec-card:hover,
 .best-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px) scale(1.05);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
@@ -155,7 +155,6 @@
 .catagory-menu {
   padding: 2rem;
   margin-top: 7%;
-  
 }
 .catagory-menu .text-class {
   align-items: center;
@@ -178,12 +177,16 @@
   background-size: cover;
   background-position: center;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 1 8px 18px rgba(0, 0, 0, 0.45);
   transition: transform 0.3s ease;
   cursor: pointer;
 }
 .bg-catagory:hover {
   transform: scale(1.05);
+  box-shadow: 1 8px 18px rgba(0, 0, 0, 0.45);
+}
+.bg-catagory:active {
+  transform: scale(0.95);
 }
 
 .overlay {
@@ -203,22 +206,24 @@
   margin: 0;
 }
 
-.best-sells{
-display: flex;
-justify-content: center;
-gap: 5rem;
-margin-top: 8rem;
-padding: 6rem;
-background-color: var(--bg-color);
-align-items: center;
+.best-sells {
+  color: white;
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+  margin-top: 8rem;
+  padding: 6rem;
+  background-color: var(--bg-color);
+  align-items: center;
 }
-.best-sells .img-sells img{
+.best-sells .img-sells img {
   width: 600px;
   height: 400px;
   border-radius: 15px;
+  box-shadow: 1px 8px 18px rgba(0, 0, 0, 0.45);
 }
 
-.contact{
+.contact {
   display: flex;
   padding: 3rem;
   justify-content: space-between;
@@ -226,25 +231,24 @@ align-items: center;
   align-items: center;
   color: white;
   margin-top: 8%;
-  
 }
 
-.contact .contact-res{
+.contact .contact-res {
   display: flex;
   gap: 5rem;
-
 }
 
-.contact-res .address{
+.contact-res .address {
   width: 300px;
 }
-.con-res p{
+.con-res p {
   cursor: pointer;
 }
-.con-res p:hover{
+.con-res p:hover {
   text-decoration: underline;
 }
 
-.decline , .increse{
+.decline,
+.increse {
   cursor: pointer;
 }

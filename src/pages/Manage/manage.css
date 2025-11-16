@@ -28,11 +28,13 @@
 }
 .menus-manage ul li{
     list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
     position: relative;
     cursor: pointer;
     transition: all 0.4s ease;
     font-size: 17px;
-    
 }
 .menus-manage ul li:hover{
     color: var(--hover-color);

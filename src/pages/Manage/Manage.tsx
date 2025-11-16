@@ -4,6 +4,7 @@ import './manage.css'
 import ManageHome from './ManagePage/ManageHome'
 import ManageTable from './ManagePage/ManageTable'
 import ManageFoods from './ManagePage/ManageFoods'
+import { Home, Pizza, UtensilsCrossed } from 'lucide-react'
 function Manage() {
 
 
@@ -38,9 +39,9 @@ function Manage() {
         </div>
         <div className="menus-manage">
           <ul>
-            <li onClick={() => setActiveTab('home')} className={activeTab === 'home' ? 'active' : ''}>จัดการหน้าหลัก</li>
-            <li onClick={() => setActiveTab('table')} className={activeTab === "table" ? 'active' : ''}>โต๊ะ</li>
-            <li onClick={() => setActiveTab('foods')} className={activeTab === 'foods' ? 'active' : ''}>จัดการอาหาร</li>
+            <li onClick={() => setActiveTab('home')} className={activeTab === 'home' ? 'active' : ''}><Home />จัดการหน้าหลัก</li>
+            <li onClick={() => setActiveTab('table')} className={activeTab === "table" ? 'active' : ''}><UtensilsCrossed />โต๊ะ</li>
+            <li onClick={() => setActiveTab('foods')} className={activeTab === 'foods' ? 'active' : ''}><Pizza />จัดการอาหาร</li>
           </ul>
         </div>
 

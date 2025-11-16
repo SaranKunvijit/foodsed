@@ -3,11 +3,16 @@
   line-height: 1.5;
   font-weight: 400;
   color: var(--text-color);
+  color: var(--remove-color);
+  color: var(--bg-color);
   color: var(--hover-color);
+    color: var(--hover-remove);
   color-scheme: light dark;
-  --text-color: #6d4c41;
-  --hover-color: #a1887f;
-  --bg-color: #d7ccc8;
+  --text-color: #123429;
+  --hover-color: #539A77;
+  --bg-color: #2C8160;
+  --hover-remove: #e51c23;
+  --remove-color:#BF092F;
   background-color: #242424;
 
   font-synthesis: none;
@@ -29,7 +34,7 @@ a:hover {
 body {
   margin: 0;
   /* display: flex; */
-  color: #6d4c41;
+  color: var(--text-color);
   /* place-items: center; */
   min-width: 320px;
   min-height: 100vh;
@@ -47,13 +52,13 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
+  color: var(--text-color);
+  background-color: var(--text-color);
   /* background-color: #1a1a1a; */
   cursor: pointer;
   transition: border-color 0.25s;
 }
-button:hover {
-  border-color: var(--bg-color);
-}
+
 button:focus,
 button:focus-visible {
   outline: none;
