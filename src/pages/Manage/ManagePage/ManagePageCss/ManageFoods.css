@@ -1,0 +1,49 @@
+.texts-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-top: 30px;
+}
+.total-food{
+    background-color: var(--text-color);
+    color: white;
+    padding: 1rem 2.5rem;
+    border-radius: 20px;
+    box-shadow: 1px 8px 18px rgba(0,0,0,0.5);
+}
+.total-food h1{
+    font-size: 24px;
+}
+.btn-createselect{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.btn-createselect select{
+    padding: 0.5rem;
+    border-radius: 10px;
+    border: 2px solid var(--text-color);
+    font-size: 16px;
+    cursor: pointer;
+}
+.btn-createselect select option{
+    cursor: pointer;
+}
+.btn-createselect button{
+    background-color: var(--text-color);
+    color: white;
+    border-radius: 20px;
+    padding: 0.75rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 1px 4px 14px rgba(0,0,0,0.5);
+}
+.btn-createselect button:hover{
+    transform: translateY(-3px) scale(1.05);
+    background-color: var(--bg-color);
+}
+.btn-createselect button:active{
+    transform: scale(0.9);
+}
