@@ -6,6 +6,7 @@ function ManageFoods() {
   const [selectType, setSelectype] = useState<string>("");
   const foodsByType = (typeName: string) =>
     foods.filter((f) => f.type === typeName);
+  
   const catagoryFood = [
     { id: "1", name: "ส้มตำ" },
     { id: "2", name: "ลาบ/ยำ" },
@@ -61,6 +62,13 @@ function ManageFoods() {
     { id: "4-9", name: "ผัดผงกะหรี่ทะเล", price: 90, type: "ตามสั่ง" },
     { id: "4-10", name: "ทอดกระเทียมหมู", price: 55, type: "ตามสั่ง" },
   ];
+   const totalFoods = selectType ===""? foods.length : foods.filter((f) => f.type ===catagoryFood.find((c) => c.id === selectType)?.name ).length;
+  // const totalFoods =
+  // selectType === ""
+  //   ? foods.length
+  //   : foods.filter(
+  //       (f) => f.type === catagoryFood.find((c) => c.id === selectType)?.name
+  //     ).length;
 
   return (
     <div>
@@ -70,7 +78,7 @@ function ManageFoods() {
           {/* ครอบtext */}
           <div className="total-food">
             <h1>รายการทั้งหมด</h1>
-            <p>100 รายการ</p>
+            <p>{totalFoods} รายการ</p>
           </div>
           {/* ครอบปุ่มจัดการ */}
           <div className="btn-createselect">

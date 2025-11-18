@@ -3,6 +3,7 @@
     justify-content: space-between;
     align-items: end;
     margin-top: 30px;
+    margin-bottom: 5%;
 }
 .total-food{
     background-color: var(--text-color);
@@ -20,15 +21,30 @@
     gap: 20px;
 }
 .btn-createselect select{
-    padding: 0.5rem;
+    padding: 0.6rem 1rem;
     border-radius: 10px;
     border: 2px solid var(--text-color);
     font-size: 16px;
     cursor: pointer;
+    transition: all 0.3s ease;
+}
+.btn-createselect select:hover{
+    border-color: var(--bg-color);
+    box-shadow: 2px 4px 15px rgba(0, 0, 0, 0.2);
+}
+.btn-createselect select:focus {
+    border-color: var(--bg-color);
+    box-shadow: 0px 0px 0px 4px rgba(0, 150, 255, 0.15);
 }
 .btn-createselect select option{
+    padding: 10px;
+    font-size: 16px;
     cursor: pointer;
+    background-color: white;
+    border-radius: 10px;
+    
 }
+
 .btn-createselect button{
     background-color: var(--text-color);
     color: white;
@@ -49,15 +65,14 @@
 }
 
 .table-list{
-    background-color: var(--bg-color);
+    
     border-radius: 10px;
-    
-    
-    box-shadow: 1px 8px 18px rgba(0,0,0,0.7);
+    overflow: hidden;
+    /* box-shadow: 1px 8px 18px rgba(0,0,0,0.7); */
+    border: 0.5px solid rgba(0,0,0,0.2);
 }
  h2{
     font-size: 24px;
-
 }
 .table-list table{
     border-collapse: collapse;
@@ -68,13 +83,13 @@
 .table-list thead{
     background-color: var(--text-color);
     color: white;
-    font-weight: 300;
+    font-weight: 100;
     
 }
 .table-list th{
     padding: 15px;
     text-align: left;
-    
-  
+    font-weight: 100;
+
 }
 
