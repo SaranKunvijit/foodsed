@@ -1,0 +1,91 @@
+.table-list{
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    box-shadow: 1px solid rgba(0,0,0,0.2);
+    overflow: hidden;
+}
+.table-list table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.table-list thead{
+    background-color: var(--text-color);
+    font-weight: 200;
+    color: white;
+}
+.table-list th {
+    padding: 14px 16px;
+    text-align: left;
+    font-weight: 400;
+    font-size: 16px;
+}
+.table-list td {
+    padding: 14px 16px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    font-size: 16px;
+}
+.table-list tr:last-child td {
+    border-bottom: none;
+}
+.table-list tbody tr:hover {
+    background: var(--bg-slate-color);
+    cursor: pointer;
+}
+h2 {
+    font-size: 22px;
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+.table-list input{
+    width: 100%;
+    padding: 0.4rem 0.2rem;
+    font-size: 16px;
+    border: 1px solid var(--text-color);
+    border-radius: 8px;
+    color: var(--text-color);
+}
+.table-list input:focus{
+    outline: none;
+}
+.table-headerlist{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.table-headerlist button{
+    background-color: var(--text-color);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.5);
+}
+.table-headerlist button:hover{
+    transform: translateY(-3px) scale(1.05);
+    background-color: var(--bg-color);
+}
+.table-headerlist button:active{
+    transform: scale(0.95);
+}
+.btn-can{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+
+}
+.btn-can button{
+    background-color: var(--text-color);
+    
+    color: white;
+    transition: all 0.3s ease;
+    box-shadow: 1px 8px 15px rgba(0,0,0,0.5);
+}
+.btn-can button:hover{
+    background-color: var(--bg-color);
+    transform:  scale(1.05);
+}
+.btn-can button:active{
+    transform: scale(0.90);
+}
