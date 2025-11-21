@@ -1,6 +1,6 @@
-import { Package,  Pizza } from "lucide-react";
+import { ImagePlus, Package,  Pizza } from "lucide-react";
 import "./ManagePageCss/ManageFoods.css";
-import { useState } from "react";
+import { useState, type ChangeEvent } from "react";
 import { foodsData } from './foodData'
 import TableComponent from "../../../Components/TableComponent/TableComponent";
 import DialogComponent from "../../../Components/DialogComponent/DialogComponent";
@@ -9,6 +9,7 @@ function ManageFoods() {
   const [openCatagory, setOpenCatagory] = useState(false)
   const [newCatagory, setNewCatagory] = useState('')
   const [editItem, setEditItem] = useState<any>(null)
+  const [editImage, setEditImage] = useState('')
   const [editName, setEditName] = useState('')
   const [editPrice, setEditPrice] = useState('')
   const [deleteId, setDeleteId] = useState<string | null>(null)
@@ -33,13 +34,14 @@ function ManageFoods() {
   const handleEdit = (food: any) => {
     setEditItem(food)
     setEditName(food.name)
+    setEditImage(food.image)
     setEditPrice(food.price.toString())
     setOpenEdit(true)
   }
   const handleConfirmEdit = () => {
     if (editItem) {
       setFoods(foods.map(f =>
-        f.id === editItem.id ? { ...f, name: editName, price: Number(editPrice) } : f))
+        f.id === editItem.id ? { ...f, image:editImage, name: editName, price: Number(editPrice) } : f))
     }
     setOpenEdit(false)
     setEditItem(null)
@@ -50,10 +52,21 @@ function ManageFoods() {
     setDeleteId(id)
     setOpen(true)
   }
+  const hanleEditImageUpload = (e:ChangeEvent<HTMLInputElement>)=> {
+    const file = e.target.files?.[0]
+    if(file && editItem){
+      const imgURL = URL.createObjectURL(file)
+      setEditImage(imgURL)
+      setFoods((prev) =>
+      prev.map((f) => (f.id ===editItem.id ? {...f, image:imgURL}:f))
+      )
+    }
+  }
 
-  const handleAddFoods = (typeName: string, name:string, price:number) =>{
+  const handleAddFoods = (typeName: string, image:string, name:string, price:number) =>{
     const newFoods = {
       id: (foods.length + 1 ).toString(),
+      image,
       name,
       price,
       type:typeName
@@ -87,6 +100,38 @@ function ManageFoods() {
         onConfirm={handleConfirmEdit}
       >
         <div className="edit-dialog">
+          {editImage ? (
+            <div className="img-wrapper">
+               <img src={editImage} alt="" className="show-images" />
+
+               <div className="img-overlay">
+                <button className="btn-change" 
+                onClick={() => document.getElementById('imageUpload')?.click()}>
+                  เปลี่ยนรูป
+                </button>
+                <button className="btn-remove" onClick={() => {
+                  setEditImage('')
+                  if(editItem){
+                    setFoods((prev) => prev.map((f) => (f.id === editItem.id ? {...f, image:''} : f )))
+                  }
+                }}>ลบรูปภาพ</button>
+               </div>
+            </div>
+           
+          ):(
+            <button onClick={() => document.getElementById('imageUpload')?.click()}
+            className="btn-edit"
+                    style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+                      <ImagePlus />
+                    </button>
+          )}
+          <input
+                    id="imageUpload"
+                    type="file"
+                    accept="image/*"
+                    onChange={hanleEditImageUpload}
+                    style={{ display: "none" }}
+                  />
           <label>
             ชื่อสินค้า
             <input type="text" value={editName} onChange={(e) => setEditName(e.target.value)} />

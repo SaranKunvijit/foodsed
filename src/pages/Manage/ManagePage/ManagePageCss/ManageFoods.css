@@ -1,113 +1,160 @@
-.texts-header{
-    display: flex;
-    justify-content: space-between;
-    align-items: end;
-    margin-top: 30px;
-    margin-bottom: 5%;
+.texts-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-top: 30px;
+  margin-bottom: 5%;
 }
-.total-food{
-    background-color: var(--text-color);
-    color: white;
-    padding: 1rem 2.5rem;
-    border-radius: 20px;
-    box-shadow: 1px 8px 18px rgba(0,0,0,0.5);
+.total-food {
+  background-color: var(--text-color);
+  color: white;
+  padding: 1rem 2.5rem;
+  border-radius: 20px;
+  box-shadow: 1px 8px 18px rgba(0, 0, 0, 0.5);
 }
-.total-food h1{
-    font-size: 24px;
+.total-food h1 {
+  font-size: 24px;
 }
-.btn-createselect{
-    display: flex;
-    align-items: center;
-    gap: 20px;
+.btn-createselect {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
-.btn-createselect select{
-    padding: 0.6rem 1rem;
-    border-radius: 10px;
-    border: 2px solid var(--text-color);
-    font-size: 16px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+.btn-createselect select {
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  border: 2px solid var(--text-color);
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
-.btn-createselect select:hover{
-    border-color: var(--bg-color);
-    box-shadow: 2px 4px 15px rgba(0, 0, 0, 0.2);
+.btn-createselect select:hover {
+  border-color: var(--bg-color);
+  box-shadow: 2px 4px 15px rgba(0, 0, 0, 0.2);
 }
 .btn-createselect select:focus {
-    border-color: var(--bg-color);
-    box-shadow: 0px 0px 0px 4px rgba(0, 150, 255, 0.15);
+  border-color: var(--bg-color);
+  box-shadow: 0px 0px 0px 4px rgba(0, 150, 255, 0.15);
 }
-.btn-createselect select option{
-    padding: 10px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: white;
-    border-radius: 10px;
-    
-}
-
-.btn-createselect button{
-    background-color: var(--text-color);
-    color: white;
-    border-radius: 20px;
-    padding: 0.75rem 2rem;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: all 0.3s ease;
-    box-shadow: 1px 4px 14px rgba(0,0,0,0.5);
-}
-.btn-createselect button:hover{
-    transform: translateY(-3px) scale(1.05);
-    background-color: var(--bg-color);
-}
-.btn-createselect button:active{
-    transform: scale(0.9);
+.btn-createselect select option {
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: white;
+  border-radius: 10px;
 }
 
-.table-list{
-    
-    border-radius: 10px;
-    overflow: hidden;
-    /* box-shadow: 1px 8px 18px rgba(0,0,0,0.7); */
-    border: 0.5px solid rgba(0,0,0,0.2);
+.btn-createselect button {
+  background-color: var(--text-color);
+  color: white;
+  border-radius: 20px;
+  padding: 0.75rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 1px 4px 14px rgba(0, 0, 0, 0.5);
 }
- h2{
-    font-size: 24px;
+.btn-createselect button:hover {
+  transform: translateY(-3px) scale(1.05);
+  background-color: var(--bg-color);
 }
-.table-list table{
-    border-collapse: collapse;
-    font-size: 18px;
-    width: 100%;
-    padding: 2rem;
-}
-.table-list thead{
-    background-color: var(--text-color);
-    color: white;
-    font-weight: 100;
-    
-}
-.table-list th{
-    padding: 15px;
-    text-align: left;
-    font-weight: 100;
+.btn-createselect button:active {
+  transform: scale(0.9);
 }
 
-.edit-dialog{
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+.table-list {
+  border-radius: 10px;
+  overflow: hidden;
+  /* box-shadow: 1px 8px 18px rgba(0,0,0,0.7); */
+  border: 0.5px solid rgba(0, 0, 0, 0.2);
 }
-.edit-dialog input{
-    padding: 0.5rem 1rem;
-    margin-left: 15px;
-    border-radius: 10px;
-    font-size: 16px;
-    color: var(--text-color);
-    border: 1px solid var(--text-color);
+h2 {
+  font-size: 24px;
 }
-.edit-dialog input:focus{
-    outline: none;
+.table-list table {
+  border-collapse: collapse;
+  font-size: 18px;
+  width: 100%;
+  padding: 2rem;
+}
+.table-list thead {
+  background-color: var(--text-color);
+  color: white;
+  font-weight: 100;
+}
+.table-list th {
+  padding: 15px;
+  text-align: left;
+  font-weight: 100;
+}
+
+.edit-dialog {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.edit-dialog input {
+  padding: 0.5rem 1rem;
+  margin-left: 15px;
+  border-radius: 10px;
+  font-size: 16px;
+  color: var(--text-color);
+  border: 1px solid var(--text-color);
+}
+.edit-dialog input:focus {
+  outline: none;
 }
 .edit-dialog label {
-    font-size: 16px;
+  font-size: 16px;
+}
+
+/* อันนี้ไม่เสร็จ */
+.img-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+.show-images {
+  width: 100%;
+  height: 320px;
+  border-radius: 8px;
+  /* box-shadow: 1px 8px 15px rgba(0, 0, 0, 0.2); */
+  object-fit: cover;
+}
+.img-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.img-wrapper:hover .img-overlay {
+  opacity: 1;
+}
+.img-overlay button {
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+  box-shadow: 1px 8px 18px solid rgba(0, 0, 0, 0.5);
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+.img-overlay button:hover{
+   transform: translateY(-5px) scale(1.2);
+}
+.img-overlay button:active{
+    transform: scale(0.95);
 }

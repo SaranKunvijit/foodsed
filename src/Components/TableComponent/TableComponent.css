@@ -37,7 +37,7 @@
     border-bottom: none;
 }
 .table-list tbody tr:hover {
-    background: var(--bg-slate-color);
+    background: rgba(0,0,0,0.07);
     cursor: pointer;
 }
 h2 {
@@ -96,4 +96,18 @@ h2 {
 }
 .btn-can button:active{
     transform: scale(0.90);
+}
+
+.btn-editimage{
+   
+    display: flex;
+    align-items: center;
+    gap: 5;
+    border-radius: 10px;
+}
+.show-image{
+    width: 70px;
+    height: 70px;
+    border-radius: 6px;
+    box-shadow: 1px 8px 18px rgba(0,0,0,0.3);
 }
