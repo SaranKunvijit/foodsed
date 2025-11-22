@@ -1,4 +1,4 @@
-import { ImagePlus, Package,  Pizza } from "lucide-react";
+import { ImagePlus, Package, Pizza } from "lucide-react";
 import "./ManagePageCss/ManageFoods.css";
 import { useState, type ChangeEvent } from "react";
 import { foodsData } from './foodData'
@@ -17,6 +17,8 @@ function ManageFoods() {
   const [openEdit, setOpenEdit] = useState(false)
   const [selectType, setSelectype] = useState<string>("");
   const [foods, setFoods] = useState(foodsData)
+  const [deleteCategoryId, setDeleteCategoryId] = useState<string | null>(null)
+  const [openDeleteCategory, setOpenDeleteCategory] = useState(false)
 
 
   const foodsByType = (typeName: string) =>
@@ -41,7 +43,7 @@ function ManageFoods() {
   const handleConfirmEdit = () => {
     if (editItem) {
       setFoods(foods.map(f =>
-        f.id === editItem.id ? { ...f, image:editImage, name: editName, price: Number(editPrice) } : f))
+        f.id === editItem.id ? { ...f, image: editImage, name: editName, price: Number(editPrice) } : f))
     }
     setOpenEdit(false)
     setEditItem(null)
@@ -52,24 +54,45 @@ function ManageFoods() {
     setDeleteId(id)
     setOpen(true)
   }
-  const hanleEditImageUpload = (e:ChangeEvent<HTMLInputElement>)=> {
+  const hanleDeleteCat = (id: string) =>{
+    setDeleteCategoryId(id);
+    setOpenDeleteCategory(true)
+  }
+  const confirmDeleteCategory = () => {
+    if (!deleteCategoryId) return;
+
+    const categoryName = catagoryFood.find(c => c.id === deleteCategoryId)?.name;
+
+    
+    setCatagoryFood(prev => prev.filter(c => c.id !== deleteCategoryId));
+
+    // ลบ foods ทั้งหมดในกลุ่มนี้
+    if (categoryName) {
+      setFoods(prev => prev.filter(f => f.type !== categoryName));
+    }
+
+    setDeleteCategoryId(null);
+    setOpenDeleteCategory(false);
+  };
+
+  const hanleEditImageUpload = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
-    if(file && editItem){
+    if (file && editItem) {
       const imgURL = URL.createObjectURL(file)
       setEditImage(imgURL)
       setFoods((prev) =>
-      prev.map((f) => (f.id ===editItem.id ? {...f, image:imgURL}:f))
+        prev.map((f) => (f.id === editItem.id ? { ...f, image: imgURL } : f))
       )
     }
   }
 
-  const handleAddFoods = (typeName: string, image:string, name:string, price:number) =>{
+  const handleAddFoods = (typeName: string, image: string, name: string, price: number) => {
     const newFoods = {
-      id: (foods.length + 1 ).toString(),
+      id: (foods.length + 1).toString(),
       image,
       name,
       price,
-      type:typeName
+      type: typeName
     }
     setFoods([...foods, newFoods])
   }
@@ -102,36 +125,36 @@ function ManageFoods() {
         <div className="edit-dialog">
           {editImage ? (
             <div className="img-wrapper">
-               <img src={editImage} alt="" className="show-images" />
+              <img src={editImage} alt="" className="show-images" />
 
-               <div className="img-overlay">
-                <button className="btn-change" 
-                onClick={() => document.getElementById('imageUpload')?.click()}>
+              <div className="img-overlay">
+                <button className="btn-change"
+                  onClick={() => document.getElementById('imageUpload')?.click()}>
                   เปลี่ยนรูป
                 </button>
                 <button className="btn-remove" onClick={() => {
                   setEditImage('')
-                  if(editItem){
-                    setFoods((prev) => prev.map((f) => (f.id === editItem.id ? {...f, image:''} : f )))
+                  if (editItem) {
+                    setFoods((prev) => prev.map((f) => (f.id === editItem.id ? { ...f, image: '' } : f)))
                   }
                 }}>ลบรูปภาพ</button>
-               </div>
+              </div>
             </div>
-           
-          ):(
+
+          ) : (
             <button onClick={() => document.getElementById('imageUpload')?.click()}
-            className="btn-edit"
-                    style={{ display: "flex", alignItems: "center", gap: "5px" }}>
-                      <ImagePlus />
-                    </button>
+              className="btn-edit"
+              >
+              <ImagePlus size={50} className="icon-img" />
+            </button>
           )}
           <input
-                    id="imageUpload"
-                    type="file"
-                    accept="image/*"
-                    onChange={hanleEditImageUpload}
-                    style={{ display: "none" }}
-                  />
+            id="imageUpload"
+            type="file"
+            accept="image/*"
+            onChange={hanleEditImageUpload}
+            style={{ display: "none" }}
+          />
           <label>
             ชื่อสินค้า
             <input type="text" value={editName} onChange={(e) => setEditName(e.target.value)} />
@@ -171,6 +194,17 @@ function ManageFoods() {
           </label>
         </div>
       </DialogComponent>
+      <DialogComponent
+  open={openDeleteCategory}
+  title="ลบประเภทสินค้า"
+  onClose={() => {
+    setOpenDeleteCategory(false);
+    setDeleteCategoryId(null);
+  }}
+  onConfirm={confirmDeleteCategory}
+>
+  <p>คุณต้องการลบประเภทสินค้านี้ และรายการอาหารที่อยู่ในหมวดนี้ทั้งหมดใช่ไหม?</p>
+</DialogComponent>
 
       <div className="foods-headers">
         <div className="texts-header">
@@ -190,10 +224,11 @@ function ManageFoods() {
               ))}
             </select>
             <button onClick={() => setOpenCatagory(true)}><Package />  เพิ่มประเภทสินค้า</button>
-            <button>
-              <Pizza />
-              เพิ่มอาหาร
-            </button>
+           
+               <button><Pizza />เพิ่มอาหาร</button>
+              
+           
+           
 
           </div>
         </div>
@@ -205,7 +240,6 @@ function ManageFoods() {
               const list = foodsByType(cat.name);
               return (
                 <div>
-
                   <TableComponent
                     key={cat.id}
                     title={cat.name}
@@ -213,6 +247,8 @@ function ManageFoods() {
                     onEdit={handleEdit}
                     onDelete={handleDelete}
                     onAddFood={handleAddFoods}
+                    onDeleteCatagory={() => hanleDeleteCat(cat.id)}
+                    
                   />
                 </div>
 
@@ -239,7 +275,7 @@ function ManageFoods() {
                     onEdit={handleEdit}
                     onDelete={handleDelete}
                     onAddFood={handleAddFoods}
-
+                    onDeleteCatagory={() => hanleDeleteCat(selectCatagory.id)}
                   />
                 </div>
               );

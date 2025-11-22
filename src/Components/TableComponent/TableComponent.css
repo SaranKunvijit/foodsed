@@ -29,7 +29,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    padding: 14px 16px;
+    padding: 10px 16px;
     border-bottom: 1px solid rgba(0,0,0,0.1);
     font-size: 16px;
 }
@@ -63,8 +63,12 @@ h2 {
     margin-bottom: 10px;
 }
 .table-headerlist button{
+    display: flex;
+    gap: 10px;
+    align-items: center;
     background-color: var(--text-color);
     color: white;
+    border-radius: 30px;
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 8px 18px rgba(0,0,0,0.5);
@@ -110,4 +114,15 @@ h2 {
     height: 70px;
     border-radius: 6px;
     box-shadow: 1px 8px 18px rgba(0,0,0,0.3);
+}
+.add-removebtn{
+    font-size: 14px;
+    display: flex;
+    gap: 10px;
+}
+.add-removebtn .remove-cat{
+    background-color: var(--remove-color);
+}
+.add-removebtn .remove-cat:hover{
+    background-color: var(--hover-remove);
 }

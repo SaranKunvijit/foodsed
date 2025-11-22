@@ -14,6 +14,7 @@ type TableProps = {
   onEdit: (food: Food) => void;
   onDelete: (id: string) => void;
   onAddFood: (id: string, image: string, name: string, price: number) => void;
+  onDeleteCatagory: (id:string) => void;
 };
 
 const TableComponent: FC<TableProps> = ({
@@ -22,21 +23,26 @@ const TableComponent: FC<TableProps> = ({
   onEdit,
   onDelete,
   onAddFood,
+  onDeleteCatagory
 }) => {
+  
   const [newImage, setNewImage] = useState("");
   const [adding, setAdding] = useState(false);
   const [newFoodName, setNewFoodName] = useState("");
   const [newPrice, setNewPrice] = useState("");
+ 
 
   const handleAddFood = () => setAdding(true);
   const handleSaveNewFood = () => {
     if (newFoodName.trim() && newPrice) {
-      onAddFood(title,newImage, newFoodName,  Number(newPrice));
+      onAddFood(title, newImage, newFoodName, Number(newPrice));
       setAdding(false);
       setNewFoodName("");
       setNewPrice("");
     }
   };
+  
+  
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
@@ -48,10 +54,12 @@ const TableComponent: FC<TableProps> = ({
     <div>
       <div className="table-headerlist">
         <h2>{title}</h2>
-        <button onClick={handleAddFood}>
-          <Pizza />
-          เพิ่มอาหาร
-        </button>
+        <div className="add-removebtn">
+          <button onClick={handleAddFood}><Pizza />เพิ่มสินค้า</button>
+          <button className="remove-cat" onClick={() => onDeleteCatagory(title)}><Trash2 />ลบประเภทสินค้า</button>
+        </div>
+
+
       </div>
 
       <div className="table-list">
@@ -70,7 +78,7 @@ const TableComponent: FC<TableProps> = ({
 
           <tbody>
             {foods.map((f, index) => (
-              
+
               <tr key={f.id}>
                 <td>{index + 1}</td>
                 <td>
@@ -110,8 +118,8 @@ const TableComponent: FC<TableProps> = ({
                 <td>#</td>
                 <td>
                   {newImage ? (
-                    <img src={newImage} alt=""  className="show-image"  />
-                  ):(
+                    <img src={newImage} alt="" className="show-image" />
+                  ) : (
                     <button onClick={() => document.getElementById('imageUpload')?.click()} className="btn-editimage">
                       <ImagePlus />
                     </button>
