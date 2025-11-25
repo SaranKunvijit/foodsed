@@ -14,7 +14,7 @@ type TableProps = {
   onEdit: (food: Food) => void;
   onDelete: (id: string) => void;
   onAddFood: (id: string, image: string, name: string, price: number) => void;
-  onDeleteCatagory: (id:string) => void;
+  onDeleteCatagory: (id: string) => void;
 };
 
 const TableComponent: FC<TableProps> = ({
@@ -25,12 +25,12 @@ const TableComponent: FC<TableProps> = ({
   onAddFood,
   onDeleteCatagory
 }) => {
-  
+
   const [newImage, setNewImage] = useState("");
   const [adding, setAdding] = useState(false);
   const [newFoodName, setNewFoodName] = useState("");
   const [newPrice, setNewPrice] = useState("");
- 
+
 
   const handleAddFood = () => setAdding(true);
   const handleSaveNewFood = () => {
@@ -39,10 +39,11 @@ const TableComponent: FC<TableProps> = ({
       setAdding(false);
       setNewFoodName("");
       setNewPrice("");
+      setNewImage('');
     }
   };
-  
-  
+
+
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
@@ -84,9 +85,9 @@ const TableComponent: FC<TableProps> = ({
                 <td>
                   <img
                     src={f.image}
-                    width={70}
-                    height={70}
-                    style={{ borderRadius: "6px" }}
+                    width={90}
+                    height={90}
+                    style={{ borderRadius: "6px", objectFit:'cover' }}
                     alt=""
                   />
                 </td>
@@ -118,20 +119,28 @@ const TableComponent: FC<TableProps> = ({
                 <td>#</td>
                 <td>
                   {newImage ? (
-                    <img src={newImage} alt="" className="show-image" />
+                    <div className="img-wrappers">
+                      <img src={newImage} alt="" className="show-image" />
+
+                      <div className="img-overlays">
+                        {/* <button className="btn-change" onClick={() => document.getElementById("addImageUpload")?.click()}>เปลี่ยนรูป</button> */}
+                        <button className="btn-removes" onClick={() => setNewImage("")} >ลบรูป</button>
+                      </div>
+                    </div>
                   ) : (
-                    <button onClick={() => document.getElementById('imageUpload')?.click()} className="btn-editimage">
-                      <ImagePlus />
-                    </button>
+                    <button
+                      onClick={() => document.getElementById("addImageUpload")?.click()}className="btn-editimage"><ImagePlus /></button>
                   )}
+
                   <input
-                    id="imageUpload"
+                    id="addImageUpload"
                     type="file"
                     accept="image/*"
                     onChange={handleImageUpload}
                     style={{ display: "none" }}
                   />
                 </td>
+
                 <td>
                   <input
                     type="text"

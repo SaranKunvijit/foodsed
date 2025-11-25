@@ -1,21 +1,24 @@
-.table-list{
+.table-list {
     width: 100%;
     border-radius: 10px;
     margin-bottom: 2rem;
-    box-shadow: 1px solid rgba(0,0,0,0.2);
+    box-shadow: 1px solid rgba(0, 0, 0, 0.2);
     overflow: hidden;
 }
+
 .table-list table {
     width: 100%;
     border-collapse: collapse;
     table-layout: fixed;
 
 }
-.table-list thead{
+
+.table-list thead {
     background-color: var(--text-color);
     font-weight: 200;
     color: white;
 }
+
 .table-list th {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -25,27 +28,32 @@
     font-weight: 400;
     font-size: 16px;
 }
+
 .table-list td {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     padding: 10px 16px;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     font-size: 16px;
 }
+
 .table-list tr:last-child td {
     border-bottom: none;
 }
+
 .table-list tbody tr:hover {
-    background: rgba(0,0,0,0.07);
+    background: rgba(0, 0, 0, 0.07);
     cursor: pointer;
 }
+
 h2 {
     font-size: 22px;
     margin-bottom: 12px;
     font-weight: 500;
 }
-.table-list input{
+
+.table-list input {
     width: 100%;
     padding: 0.4rem 0.2rem;
     font-size: 16px;
@@ -53,16 +61,19 @@ h2 {
     border-radius: 8px;
     color: var(--text-color);
 }
-.table-list input:focus{
+
+.table-list input:focus {
     outline: none;
 }
-.table-headerlist{
+
+.table-headerlist {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
 }
-.table-headerlist button{
+
+.table-headerlist button {
     display: flex;
     gap: 10px;
     align-items: center;
@@ -71,58 +82,122 @@ h2 {
     border-radius: 30px;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 8px 18px rgba(0,0,0,0.5);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.5);
 }
-.table-headerlist button:hover{
+
+.table-headerlist button:hover {
     transform: translateY(-3px) scale(1.05);
     background-color: var(--bg-color);
 }
-.table-headerlist button:active{
+
+.table-headerlist button:active {
     transform: scale(0.95);
 }
-.btn-can{
+
+.btn-can {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 15px;
 
 }
-.btn-can button{
+
+.btn-can button {
     background-color: var(--text-color);
-    
+
     color: white;
     transition: all 0.3s ease;
-    box-shadow: 1px 8px 15px rgba(0,0,0,0.5);
+    box-shadow: 1px 8px 15px rgba(0, 0, 0, 0.5);
 }
-.btn-can button:hover{
+
+.btn-can button:hover {
     background-color: var(--bg-color);
-    transform:  scale(1.05);
+    transform: scale(1.05);
 }
-.btn-can button:active{
+
+.btn-can button:active {
     transform: scale(0.90);
 }
 
-.btn-editimage{
-   
+.btn-editimage {
+    width: 90px;
+    height: 90px;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 5;
     border-radius: 10px;
 }
-.show-image{
-    width: 70px;
-    height: 70px;
+
+ .show-image {
+    width: 90px;
+    height: 90px;
     border-radius: 6px;
-    box-shadow: 1px 8px 18px rgba(0,0,0,0.3);
+    object-fit: cover;
+    box-shadow: 1px 8px 18px rgba(0, 0, 0, 0.3);
 }
-.add-removebtn{
+
+.add-removebtn {
     font-size: 14px;
     display: flex;
     gap: 10px;
 }
-.add-removebtn .remove-cat{
+
+.add-removebtn .remove-cat {
     background-color: var(--remove-color);
 }
-.add-removebtn .remove-cat:hover{
+
+.add-removebtn .remove-cat:hover {
     background-color: var(--hover-remove);
+}
+
+/* เพิ่มรูปลบรูป */
+.img-wrappers {
+
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.img-overlays {
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 50%;
+    display: flex;
+    background: rgba(0, 0, 0, 0.5);
+    transition: opacity 0.3s;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    opacity: 0;
+
+}
+
+.img-wrappers:hover .img-overlays {
+    opacity: 1;
+}
+
+.img-overlays button {
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    margin-top: 30px;
+    box-shadow: 1px 8px 18px solid rgba(0, 0, 0, 0.5);
+    padding: 7px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.3s ease;
+}
+
+.img-overlays button:hover {
+    transform: translateY(-5px) scale(1.2);
+}
+
+.img-overlays button:active {
+    transform: scale(0.95);
 }

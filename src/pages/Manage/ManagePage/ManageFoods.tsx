@@ -48,8 +48,6 @@ function ManageFoods() {
     setOpenEdit(false)
     setEditItem(null)
   }
-
-
   const handleDelete = (id: string) => {
     setDeleteId(id)
     setOpen(true)
@@ -60,17 +58,11 @@ function ManageFoods() {
   }
   const confirmDeleteCategory = () => {
     if (!deleteCategoryId) return;
-
     const categoryName = catagoryFood.find(c => c.id === deleteCategoryId)?.name;
-
-    
     setCatagoryFood(prev => prev.filter(c => c.id !== deleteCategoryId));
-
-    // ลบ foods ทั้งหมดในกลุ่มนี้
     if (categoryName) {
       setFoods(prev => prev.filter(f => f.type !== categoryName));
     }
-
     setDeleteCategoryId(null);
     setOpenDeleteCategory(false);
   };

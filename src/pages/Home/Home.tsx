@@ -26,7 +26,7 @@ function Home() {
     { id: 3, name: "ก๋วยเตี๋ยวต้มยำ", price: 70, total: 1, img: card },
     { id: 4, name: "หมูกระเทียม", price: 85, total: 1, img: card },
   ]);
-
+  
   const handleIncrese = (id: number, type: any) => {
     if(type === 'recommendMenus'){
       setRecommendMenus((prev) => prev.map((menu) => 
