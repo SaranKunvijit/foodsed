@@ -1,6 +1,22 @@
-.containers {
-    margin: 2rem 8%;
-    overflow: hidden;
+.food-types {
     display: flex;
-    flex-direction: column;
-}
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  
+  .food-types button {
+    padding: 8px 14px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    background: white;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  
+  .food-types button.active-type {
+    background: #ff7c00;
+    color: white;
+    border-color: #ff7c00;
+  }
+  

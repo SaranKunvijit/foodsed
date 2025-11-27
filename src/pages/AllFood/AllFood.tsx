@@ -7,12 +7,24 @@ import { ShoppingCart } from 'lucide-react';
 
 
 function AllFood() {
-  const [foods, setFoods] = useState(foodsData);
+  const [foods] = useState(foodsData);
+  const [selectTypeFoods, setSelectTypeFoods] = useState('ทั้งหมด');
+
+  const allType = ['ทั้งหมด',...new Set(foodsData.map(item => item.type))]
+  const fillterType = selectTypeFoods === 'ทั้งหมด' ? foods : foods.filter(item => item.type === selectTypeFoods);
+
+
   return (
     <div>
       <div className="containers">
+        <div className="food-types">
+          {allType.map((type) => (
+            <button key={type} className={selectTypeFoods === type? 'active-type' :''} 
+            onClick={() => setSelectTypeFoods(type)}>{type}</button>
+          ))}
+        </div>
       <div className="header-card">
-          {foods.map((menu) => (
+          {fillterType.map((menu) => (
             <div className="rec-card" key={menu.id}>
               <img src={menu.image} alt="" />
 
