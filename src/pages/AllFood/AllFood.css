@@ -1,0 +1,6 @@
+.containers {
+    margin: 2rem 8%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}

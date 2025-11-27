@@ -1,32 +1,31 @@
-import { ShoppingCart } from 'lucide-react'
-import React from 'react'
+import { useState } from 'react'
+import './AllFood.css'
+import { foodsData } from '../Manage/ManagePage/foodData'
+
+import { ShoppingCart } from 'lucide-react';
+
+
 
 function AllFood() {
+  const [foods, setFoods] = useState(foodsData);
   return (
     <div>
-        <div className="menu-headers">
-            <div className="menu-headertext">
-                <h1>Title</h1>
-            </div>
-            <div className="header-card">
-         
-            <div className="rec-card" >
-              <img src='' alt="" />
+      <div className="containers">
+      <div className="header-card">
+          {foods.map((menu) => (
+            <div className="rec-card" key={menu.id}>
+              <img src={menu.image} alt="" />
 
               <div className="detail-card">
                 <div className="name-price">
-                  <h1></h1>
-                  <h2> ฿</h2>
+                  <h1>{menu.name}</h1>
+                  <h2>{menu.price} ฿</h2>
                 </div>
 
                 <div className="total">
-                  <p className="decline" 
-                //   onClick={() => handleDecline(menu.id , 'recommendMenus')}
-                  >-</p>
+                  <p className="decline">-</p>
                   <p className="num"></p>
-                  <p className="increse" 
-                //   onClick={() => handleIncrese(menu.id ,'recommendMenus')}
-                  >+</p>
+                  <p className="increse">+</p>
                 </div>
 
                 <button>
@@ -35,9 +34,11 @@ function AllFood() {
                 </button>
               </div>
             </div>
-          {/* ))} */}
+          ))}
         </div>
-        </div>
+      </div>
+
+
     </div>
   )
 }
