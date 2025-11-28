@@ -4,6 +4,7 @@ import card from "../../assets/image2.png";
 import card1 from "../../assets/image.png";
 import "./home.css";
 import { useState } from "react";
+import CardComponent from "../../Components/CardComponent/CardComponent";
 
 function Home() {
   const CatagoryMenu = [
@@ -16,8 +17,8 @@ function Home() {
   const [recommendMenus, setRecommendMenus] = useState([
     { id: 1, name: "ต้มแซ่บกระดูกอ่อน", price: 200, total: 1, img: card },
     { id: 2, name: "กะเพราเนื้อ", price: 80, total: 1, img: card },
-    { id: 3, name: "ผัดไทยกุ้งสด", price: 90, total:1, img: card },
-    { id: 4, name: "ข้าวมันไก่", price: 60, total:1, img: card },
+    { id: 3, name: "ผัดไทยกุ้งสด", price: 90, total: 1, img: card },
+    { id: 4, name: "ข้าวมันไก่", price: 60, total: 1, img: card },
   ]);
 
   const [bestSellers, setBestSellers] = useState([
@@ -26,30 +27,30 @@ function Home() {
     { id: 3, name: "ก๋วยเตี๋ยวต้มยำ", price: 70, total: 1, img: card },
     { id: 4, name: "หมูกระเทียม", price: 85, total: 1, img: card },
   ]);
-  
+
   const handleIncrese = (id: number, type: any) => {
-    if(type === 'recommendMenus'){
-      setRecommendMenus((prev) => prev.map((menu) => 
-      menu.id === id ? {...menu, total:menu.total + 1} : menu
+    if (type === 'recommendMenus') {
+      setRecommendMenus((prev) => prev.map((menu) =>
+        menu.id === id ? { ...menu, total: menu.total + 1 } : menu
       ))
-    } else if(type === 'bestSellers'){
-      setBestSellers((prev) => prev.map((menu) => 
-      menu.id === id ? {...menu, total: menu.total +1} : menu
+    } else if (type === 'bestSellers') {
+      setBestSellers((prev) => prev.map((menu) =>
+        menu.id === id ? { ...menu, total: menu.total + 1 } : menu
       ))
     }
   }
 
-  const handleDecline = (id:number, type:any) =>{
-    if(type === 'recommendMenus'){
+  const handleDecline = (id: number, type: any) => {
+    if (type === 'recommendMenus') {
       setRecommendMenus((prev) => prev.map((menu) =>
-      menu.id===id && menu.total > 1 ? {...menu, total: menu.total-1}:menu
+        menu.id === id && menu.total > 1 ? { ...menu, total: menu.total - 1 } : menu
       ))
-    } else if(type === 'bestSellers'){
-      setBestSellers((prev) => prev.map((menu) => 
-      menu.id === id && menu.total> 1 ? {...menu, total:menu.total -1}: menu
+    } else if (type === 'bestSellers') {
+      setBestSellers((prev) => prev.map((menu) =>
+        menu.id === id && menu.total > 1 ? { ...menu, total: menu.total - 1 } : menu
       ))
     }
-  } 
+  }
   return (
     <div className="container">
       <img src={slid} alt="background" className="img-head" />
@@ -91,27 +92,18 @@ function Home() {
 
         <div className="header-card">
           {recommendMenus.map((menu) => (
-            <div className="rec-card" key={menu.id}>
-              <img src={menu.img} alt="" />
 
-              <div className="detail-card">
-                <div className="name-price">
-                  <h1>{menu.name}</h1>
-                  <h2>{menu.price} ฿</h2>
-                </div>
-
-                <div className="total">
-                  <p className="decline" onClick={() => handleDecline(menu.id , 'recommendMenus')}>-</p>
-                  <p className="num">{menu.total}</p>
-                  <p className="increse" onClick={() => handleIncrese(menu.id ,'recommendMenus')}>+</p>
-                </div>
-
-                <button>
-                  <ShoppingCart />
-                  ลงตะกร้า
-                </button>
-              </div>
-            </div>
+            <CardComponent
+              key={menu.id}
+              image={menu.img}
+              title={menu.name}
+              price={menu.price}
+              qty={menu.total}
+              onIncrese={() => handleIncrese(menu.id, 'recommendMenus')}
+              onDecline={() => handleDecline(menu.id, 'recommendMenus')}
+              addCart={(qty) => console.log('เพิ่มลงตะกร้าแล้ว', menu.name, qty)
+              }
+            />
           ))}
         </div>
       </div>
@@ -123,25 +115,17 @@ function Home() {
         </div>
         <div className="best-menu">
           {bestSellers.map((menu) => (
-            <div className="best-card" key={menu.id}>
-              <img src={menu.img} alt="" />
-              <div className="detail-best">
-                <div className="name-price">
-                  <h1>{menu.name}</h1>
-                  <h2>{menu.price} ฿</h2>
-                </div>
-                <div className="total">
-                  <p className="decline" onClick={() => handleDecline(menu.id , 'bestSellers')}>-</p>
-                  <p className="num">{menu.total}</p>
-                  <p className="increse" onClick={() => handleIncrese(menu.id ,'bestSellers')}>+</p>
-                </div>
-
-                <button>
-                  <ShoppingCart />
-                  ลงตะกร้า
-                </button>
-              </div>
-            </div>
+            <CardComponent
+              key={menu.id}
+              image={menu.img}
+              title={menu.name}
+              price={menu.price}
+              qty={menu.total}
+              onIncrese={() => handleIncrese(menu.id, 'bestSellers')}
+              onDecline={() => handleDecline(menu.id, 'bestSellers')}
+              addCart={(qty) => console.log('เพิ่มลงตะกร้าแล้ว', menu.name, qty)
+              }
+            />
           ))}
         </div>
       </div>
