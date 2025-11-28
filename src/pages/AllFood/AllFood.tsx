@@ -8,26 +8,19 @@ function AllFood() {
   const [selectTypeFoods, setSelectTypeFoods] = useState('ทั้งหมด');
   const [addCart, setAddCart] = useState(foodsData.map(item => ({ id: item.id, total: 1 })))
 
-  // ตัวเลือกประเภท
   const allType = ['ทั้งหมด', ...new Set(foodsData.map(item => item.type))];
-
-  // กรองเมนูตามประเภทที่เลือก
   const fillterType = selectTypeFoods === 'ทั้งหมด' ? foods : foods.filter(item => item.type === selectTypeFoods);
-
   const handleIncrese = (id: any) => {
     setAddCart(prev => prev.map(item => item.id === id ? { ...item, total: item.total + 1 } : item))
   }
-
   const handleDecline = (id: any) => {
     setAddCart(prev => prev.map(item => item.id === id && item.total > 1 ? { ...item, total: item.total - 1 } : item))
   }
-
   const getTotal = (id: any) => {
     const items = addCart.find(c => c.id === id)
     return items ? items.total : 1;
   }
 
-  // จัดกลุ่มเมนูตามประเภท
   const groupedMenus: { [key: string]: typeof foodsData } = {};
   fillterType.forEach(menu => {
     if (!groupedMenus[menu.type]) groupedMenus[menu.type] = [];
@@ -37,9 +30,8 @@ function AllFood() {
   return (
     <div>
       <div className="containers">
-
-        {/* ตัวเลือกประเภท */}
-        <div className="food-types">
+        <div className="types-headers">
+           <div className="food-types">
           {allType.map((type) => (
             <p
               key={type}
@@ -50,8 +42,8 @@ function AllFood() {
             </p>
           ))}
         </div>
-
-        {/* แสดงเมนู แยกตามประเภท */}
+        </div>
+       
         {Object.keys(groupedMenus).map((type) => (
           <div key={type} className="food-group">
             <h2 className="food-type-title">{type}</h2>

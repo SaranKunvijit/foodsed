@@ -49,7 +49,7 @@
   text-decoration: underline;
   color: var(--hover-color);
 }
-.header-card,
+.headeres-card,
 .best-menu {
   display: flex;
   flex-wrap: wrap;
@@ -118,7 +118,7 @@
   gap: 5rem;
   margin-top: 8rem;
   padding: 6rem;
-  background-color: var(--bg-color);
+  background: linear-gradient(150deg, var(--text-color), var(--hover-color),var(--text-color));
   align-items: center;
 }
 .best-sells .img-sells img {
@@ -153,7 +153,3 @@
   text-decoration: underline;
 }
 
-.decline,
-.increse {
-  cursor: pointer;
-}

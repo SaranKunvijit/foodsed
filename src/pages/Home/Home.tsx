@@ -90,7 +90,7 @@ function Home() {
           <p>แสดงทั้งหมด</p>
         </div>
 
-        <div className="header-card">
+        <div className="headeres-card">
           {recommendMenus.map((menu) => (
 
             <CardComponent

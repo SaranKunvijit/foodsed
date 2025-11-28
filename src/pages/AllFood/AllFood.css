@@ -1,3 +1,6 @@
+.types-headers{
+ border-bottom: 2px solid var(--text-color);
+}
 .food-types {
     display: flex;
     gap: 10px;
@@ -8,9 +11,11 @@
   
   .food-types p {
     position: relative;
-    padding: 8px 14px;
+    font-size: 1.3rem;
+    padding: 0 12px;
     cursor: pointer;
     transition: all 0.3s ease;
+   
   }
   
   .food-types p:hover{

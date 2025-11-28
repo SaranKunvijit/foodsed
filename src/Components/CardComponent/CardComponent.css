@@ -40,7 +40,7 @@
 
 .card-details .card-price {
     font-size: 1rem;
-    font-weight: 400;
+    font-weight: 700;
     color: var(--text-color);
     margin: 0.2rem 0;
 }
@@ -78,7 +78,7 @@
     border: 2px solid var(--text-color);
     background-color: white;
     color: var(--text-color);
-    border-radius: 0.5rem;
+    border-radius: 2rem;
     cursor: pointer;
     font-weight: 500;
     transition: all 0.3s ease;
@@ -86,9 +86,11 @@
 
 .addtocart:hover {
     transform: translateY(-5px) scale(1.02);
-    background-color: var(--text-color);
+    /* background-color: var(--text-color); */
     color: white;
     border: 2px solid var(--text-color);
+    background: linear-gradient(45deg,var(--hover-color),var(--text-color), var(--bg-color));
+    /* background: linear-gradient(45deg, var(--text-color), #ffffff33); */
 }
 
 .addtocart:active {

@@ -11,15 +11,23 @@ import {
   Home,
 } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
+import { useState } from "react";
+import SildeBarComponent from "../../Components/SildeBarComponent/SildeBarComponent";
 
 function Nav() {
   const location = useLocation();
+  const [isCartOpen, setIsCartOpen] = useState(false);
+
 
   // ตรวจสอบว่าตอนนี้อยู่หน้า Home หรือไม่
   const isHome = location.pathname === "/";
 
   return (
     <nav className={isHome ? "nav-home" : "nav-default"}>
+      <SildeBarComponent
+  isOpen={isCartOpen}
+  onClose={() => setIsCartOpen(false)}
+/>
       <div className="nav-container">
         {/* เมนูซ้าย */}
         <div className="menus">
@@ -39,7 +47,9 @@ function Nav() {
         {/* เมนูขวา */}
         <div className="menus">
           <ul className="items">
-            <li><Link to="/cart"><ShoppingCart /> Cart</Link></li>
+           <li onClick={() => setIsCartOpen(true)}>
+            <span className="nav-item-btn"><ShoppingCart /> Cart</span></li>
+
             <li className="dropdown">
               <div className="dropdown-btn"><User /> User</div>
               <ul className="dropdown-menu">

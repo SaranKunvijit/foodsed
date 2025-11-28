@@ -3,6 +3,7 @@ import Nav from "./pages/nav/Nav"
 import Home from "./pages/Home/Home"
 import Manage from "./pages/Manage/Manage"
 import AllFood from "./pages/AllFood/AllFood"
+import Tables from "./pages/Tables/Tables"
 
 
 function App() {
@@ -14,6 +15,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/manage" element={<Manage />} />
         <Route path="/menu" element={<AllFood />} />
+        <Route path="/tables" element={<Tables />} />
+        
       </Routes>
     </Router>
   )

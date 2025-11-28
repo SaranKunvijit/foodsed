@@ -26,7 +26,7 @@ const CardComponent: FC<CardComponentProps> = ({ image, title, price, qty, onDec
               <div className="card-content">
                 <div className="card-details">
                     <h1 className='card-title'>{title}</h1>
-                    <p className='card-price'>{price}</p>
+                    <p className='card-price'>{price} ฿</p>
                 </div>
                 <div className="card-btn">
                     <p className='increse' onClick={onDecline}>-</p>
