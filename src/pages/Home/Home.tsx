@@ -1,4 +1,4 @@
-import { ShoppingCart } from "lucide-react";
+
 import slid from "../../assets/image1.png";
 import card from "../../assets/image2.png";
 import card1 from "../../assets/image.png";

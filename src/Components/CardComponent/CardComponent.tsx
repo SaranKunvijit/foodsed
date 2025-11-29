@@ -1,5 +1,5 @@
 
-import { useState, type FC } from 'react'
+import { type FC } from 'react'
 import './CardComponent.css'
 import { ShoppingCart } from 'lucide-react'
 type CardComponentProps = {

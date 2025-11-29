@@ -7,6 +7,7 @@ function AllFood() {
   const [foods] = useState(foodsData);
   const [selectTypeFoods, setSelectTypeFoods] = useState('ทั้งหมด');
   const [addCart, setAddCart] = useState(foodsData.map(item => ({ id: item.id, total: 1 })))
+  
 
   const allType = ['ทั้งหมด', ...new Set(foodsData.map(item => item.type))];
   const fillterType = selectTypeFoods === 'ทั้งหมด' ? foods : foods.filter(item => item.type === selectTypeFoods);
