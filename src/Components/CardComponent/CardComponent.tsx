@@ -3,7 +3,7 @@ import { type FC } from 'react'
 import './CardComponent.css'
 import { ShoppingCart } from 'lucide-react'
 type CardComponentProps = {
-    image: string
+    img: string
     title: string
     price: number
     qty: number
@@ -11,7 +11,7 @@ type CardComponentProps = {
     onDecline: () => void
     addCart: (qty: number) => void
 }
-const CardComponent: FC<CardComponentProps> = ({ image, title, price, qty, onDecline, onIncrese, addCart }) => {
+const CardComponent: FC<CardComponentProps> = ({ img, title, price, qty, onDecline, onIncrese, addCart }) => {
 
 
     const handleAddToCart = () => {
@@ -21,7 +21,7 @@ const CardComponent: FC<CardComponentProps> = ({ image, title, price, qty, onDec
         <div>
             <div className="headers-card">
                 <div className="text-card">
-                <img src={image} alt="" />
+                <img src={img} alt="" />
             </div>
               <div className="card-content">
                 <div className="card-details">

@@ -11,18 +11,24 @@
 }
 
 .cart-sidebar {
-    position: relative;
+  position: relative;
   width: 550px;
   height: 100%;
   background: white;
   padding: 20px;
   animation: slideIn 0.25s ease forwards;
-  box-shadow: -4px 0 15px rgba(0,0,0,0.2);
+  box-shadow: -4px 0 15px rgba(0, 0, 0, 0.2);
+  flex-direction: column;
 }
 
 @keyframes slideIn {
-  from { transform: translateX(100%); }
-  to   { transform: translateX(0); }
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
 }
 
 .close-btn {
@@ -36,3 +42,90 @@
   z-index: 1001;
 }
 
+.cart-content {
+  padding: 1rem;
+  max-height: 800px;
+  border-radius: 10px;
+  
+  /* กำหนดความสูง scroll ได้ */
+  overflow-y: auto;
+  flex: 1;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.cart-image {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-right: 1rem;
+}
+
+.cart-details {
+  display: flex;
+  flex-direction: column;
+
+}
+
+/* ทำให้ในส่วน cart detail ชิดกัน */
+.cart-detail p,
+.cart-detail span,
+.cart-detail div {
+  margin: 4px;
+  padding: 0;
+}
+
+.cart-name {
+
+  font-weight: bold;
+  margin-bottom: 0.2rem;
+}
+
+.cart-details p {
+  line-height: 0.1;
+}
+
+.cart-qty,
+.cart-price {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.empty-cart {
+  text-align: center;
+  color: #888;
+  padding: 2rem 0;
+}
+
+.btn-qty {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.decline,
+.increse {
+  cursor: pointer;
+
+}
+
+.save-btn {
+  position: fixed;
+  bottom: 0;
+  width: 90%;
+  margin-bottom: 4rem;
+  padding: 10px;
+  font-size: 1rem;
+  border: none;
+  background-color: #333;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}

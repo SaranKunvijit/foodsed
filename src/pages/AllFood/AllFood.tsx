@@ -1,9 +1,12 @@
-import { useState } from 'react'
+import { useState, type FC } from 'react'
 import './AllFood.css'
 import { foodsData } from '../Manage/ManagePage/foodData'
 import CardComponent from '../../Components/CardComponent/CardComponent';
 
-function AllFood() {
+type AllFoodProps = {
+  handleAddCart: (menu: any, qty: number) => void;
+};
+const AllFood:FC<AllFoodProps> =({handleAddCart})=> {
   const [foods] = useState(foodsData);
   const [selectTypeFoods, setSelectTypeFoods] = useState('ทั้งหมด');
   const [addCart, setAddCart] = useState(foodsData.map(item => ({ id: item.id, total: 1 })))
@@ -53,13 +56,14 @@ function AllFood() {
               {groupedMenus[type].map((menu) => (
                 <CardComponent
                   key={menu.id}
-                  image={menu.image}
+                  img={menu.image}
                   title={menu.name}
                   price={menu.price}
                   qty={getTotal(menu.id)}
                   onIncrese={() => handleIncrese(menu.id)}
                   onDecline={() => handleDecline(menu.id)}
-                  addCart={(qty) => console.log('เพิ่มลงตะกร้าแล้ว', menu.name, qty)}
+                  addCart={(qty) => handleAddCart( menu, qty)}
+
                 />
               ))}
             </div>
