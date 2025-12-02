@@ -16,7 +16,7 @@
   height: 100%;
   background: white;
   padding: 20px;
-  animation: slideIn 0.25s ease forwards;
+  animation: slideIn 1s ease forwards;
   box-shadow: -4px 0 15px rgba(0, 0, 0, 0.2);
   flex-direction: column;
 }
@@ -44,8 +44,7 @@
 
 .cart-content {
   padding: 1rem;
-  max-height: 800px;
-  border-radius: 10px;
+  max-height: 680px;
   
   /* กำหนดความสูง scroll ได้ */
   overflow-y: auto;
@@ -57,7 +56,8 @@
   align-items: center;
   margin-bottom: 1rem;
   padding: 0.5rem;
-  border-bottom: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
 }
 
 .cart-image {
@@ -116,7 +116,7 @@
 
 }
 
-.save-btn {
+.total-price-save {
   position: fixed;
   bottom: 0;
   width: 90%;
@@ -124,8 +124,59 @@
   padding: 10px;
   font-size: 1rem;
   border: none;
-  background-color: #333;
-  color: white;
+  background-color: white;
   border-radius: 6px;
+  
+}
+.save-btn{
+  width: 90%;
+  font-size: 18px;
+  border-radius: 4rem;
+  border: 2px solid var(--text-color);
+  margin-left: 10px;
+  color: var(--text-color);
+  font-weight: 600;
   cursor: pointer;
+  transition: all 0.5s ease;
+}
+.save-btn:hover{
+  color: white;
+  border: 2px solid var(--text-color);
+  background: linear-gradient(45deg,var(--text-color),var(--hover-color),var(--text-color));
+  transform: translateY(-3px) scale(1.03);
+}
+.save-btn:active{
+  transform: scale(0.95);
+}
+.total-price{
+  gap: 8px;
+  font-size: 18px;
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  margin-right: 8%;
+ 
+}
+.total-price span{
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--remove-color);
+}
+.delete-item{
+  position: fixed;
+  display: flex;
+  justify-content: end;
+  margin-left: 75%;
+}
+.remove{
+  color: var(--remove-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.remove:hover{
+  transform: scale(1.3);
+  color: var(--hover-remove);
+}
+.remove:active{
+  transform: scale(0.9);
 }

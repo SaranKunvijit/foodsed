@@ -11,24 +11,24 @@
   };
   const Home:FC<HomeProps> = ({handleAddCart}) => {
     const CatagoryMenu = [
-      { id: 1, name: "ส้มตำ", detail: "รายละเอียด", img: card },
-      { id: 2, name: "ต้มแซ่บๆนัวๆ", detail: "รายละเอียด", img: card1 },
-      { id: 3, name: "เมนูย่างทอด", detail: "รายละเอียด", img: card },
-      { id: 4, name: "อาหารตามสั่ง", detail: "รายละเอียด", img: card1 },
+      { id: 1, name: "ส้มตำ", detail: "รายละเอียด", image: card },
+      { id: 2, name: "ต้มแซ่บๆนัวๆ", detail: "รายละเอียด", image: card1 },
+      { id: 3, name: "เมนูย่างทอด", detail: "รายละเอียด", image: card },
+      { id: 4, name: "อาหารตามสั่ง", detail: "รายละเอียด", image: card1 },
     ];
 
     const [recommendMenus, setRecommendMenus] = useState([
-      { id: 1, name: "ต้มแซ่บกระดูกอ่อน", price: 200, total: 1, img: card },
-      { id: 2, name: "กะเพราเนื้อ", price: 80, total: 1, img: card },
-      { id: 3, name: "ผัดไทยกุ้งสด", price: 90, total: 1, img: card },
-      { id: 4, name: "ข้าวมันไก่", price: 60, total: 1, img: card },
+      { id: 1, name: "ต้มแซ่บกระดูกอ่อน", price: 200, total: 1, image: card },
+      { id: 2, name: "กะเพราเนื้อ", price: 80, total: 1, image: card },
+      { id: 3, name: "ผัดไทยกุ้งสด", price: 90, total: 1, image: card },
+      { id: 4, name: "ข้าวมันไก่", price: 60, total: 1, image: card },
     ]);
 
     const [bestSellers, setBestSellers] = useState([
-      { id: 1, name: "ข้าวผัดกุ้ง", price: 75, total: 1, img: card },
-      { id: 2, name: "ราดหน้าเนื้อ", price: 95, total: 1, img: card },
-      { id: 3, name: "ก๋วยเตี๋ยวต้มยำ", price: 70, total: 1, img: card },
-      { id: 4, name: "หมูกระเทียม", price: 85, total: 1, img: card },
+      { id: 1, name: "ข้าวผัดกุ้ง", price: 75, total: 1, image: card },
+      { id: 2, name: "ราดหน้าเนื้อ", price: 95, total: 1, image: card },
+      { id: 3, name: "ก๋วยเตี๋ยวต้มยำ", price: 70, total: 1, image: card },
+      { id: 4, name: "หมูกระเทียม", price: 85, total: 1, image: card },
     ]);
 
     const handleIncrese = (id: number, type: any) => {
@@ -65,7 +65,7 @@
                 className="bg-catagory"
                 key={catagory.id}
                 style={{
-                  backgroundImage: `url(${catagory.img})`,
+                  backgroundImage: `url(${catagory.image})`,
                 }}
               >
                 <div className="overlay">
@@ -98,7 +98,7 @@
 
               <CardComponent
                 key={menu.id}
-                img={menu.img}
+                img={menu.image}
                 title={menu.name}
                 price={menu.price}
                 qty={menu.total}
@@ -120,7 +120,7 @@
             {bestSellers.map((menu) => (
               <CardComponent
                 key={menu.id}
-                img={menu.img}
+                img={menu.image}
                 title={menu.name}
                 price={menu.price}
                 qty={menu.total}

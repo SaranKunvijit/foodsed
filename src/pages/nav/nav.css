@@ -1,5 +1,5 @@
 nav{
-  transition: all 0.3s ease-in-out; 
+  transition: all 1s ease-in-out; 
 }
 .nav-home {
   width: 100%;
@@ -8,7 +8,7 @@ nav{
   background-color: var(--text-color); 
   position: absolute;
   z-index: 0;
-  transition: all 0.4s ease-in-out;
+  transition: all 1s ease-in-out;
 }
 .nav-default {
   width: 100%;
