@@ -1,15 +1,10 @@
-import  { useState } from 'react'
-import './manage.css'
-
-import ManageHome from './ManagePage/ManageHome'
-import ManageTable from './ManagePage/ManageTable'
-import ManageFoods from './ManagePage/ManageFoods'
+import { useState } from 'react'
+import './Settings.css'
 import { Home, Pizza, UtensilsCrossed } from 'lucide-react'
-function Manage() {
-
-
+import SettingsHome from './ManagePage/SettingsHome'
+import SettingsFoods from './ManagePage/SettingsFoods'
+function Settings() {
   const [activeTab, setActiveTab] = useState<'home' | 'table' | 'foods'>('home')
- 
 
   const HeadersText = () => {
     switch (activeTab) {
@@ -24,27 +19,24 @@ function Manage() {
 
   const renderComponent = () => {
     switch (activeTab) {
-      case 'home': return <ManageHome />
-      case 'table': return <ManageTable />
-      case 'foods': return <ManageFoods />
+      case 'home': return <SettingsHome />
+      case 'foods': return <SettingsFoods />
     }
   }
   const headerText = HeadersText()
   return (
     <div className='containers'>
       <div className="text-headers">
-      <div className="text-manage">
+        <div className="text-manage">
           <h1>{headerText.title}</h1>
           <h2>{headerText.subtitle}</h2>
         </div>
         <div className="menus-manage">
           <ul>
             <li onClick={() => setActiveTab('home')} className={activeTab === 'home' ? 'active' : ''}><Home />จัดการหน้าหลัก</li>
-            <li onClick={() => setActiveTab('table')} className={activeTab === "table" ? 'active' : ''}><UtensilsCrossed />โต๊ะ</li>
             <li onClick={() => setActiveTab('foods')} className={activeTab === 'foods' ? 'active' : ''}><Pizza />จัดการอาหาร</li>
           </ul>
         </div>
-
       </div>
       <div className="content-area">
         {renderComponent()}
@@ -53,4 +45,4 @@ function Manage() {
   )
 }
 
-export default Manage
+export default Settings

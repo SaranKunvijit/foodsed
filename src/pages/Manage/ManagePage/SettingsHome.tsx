@@ -1,7 +1,22 @@
 
+import { useState } from 'react'
 import ImageUploads from '../../../Components/ImageUploads/ImageUploads'
-import '../ManagePage/ManagePageCss/ManageHome.css'
-function ManageHome() {
+import '../ManagePage/SettingsPageCss/SettingsHome.css'
+import { Plus } from 'lucide-react'
+function SettingsHome() {
+  const [tableTotal, setTableTotal] = useState(0)
+  const [inputTables, setInputTables] = useState('')
+  const tables = Array.from({ length: tableTotal }, (_, i) => i + 1)
+
+  const handleSetTables = () => {
+    const numbers = Number(inputTables)
+    if (isNaN(numbers) || numbers < 0) {
+      console.log("กรุณากรอกตัวเลขที่ถูกต้อง")
+      return
+    }
+    setTableTotal(numbers)
+    setInputTables('')
+  }
   const handleSubmit = () => {
     alert('บันทึกข้อมูลเรียบร้อยแล้ว')
   }
@@ -15,12 +30,10 @@ function ManageHome() {
   }
   return (
     <div>
-      {/* โลโก้ */}
       <div className="texts-logo">
         <p>ชื่อร้าน</p>
         <input type="text" placeholder='กรอกชื่อโลโก้' />
       </div>
-      {/* อัพรูปหน้าหลัก */}
       <div className="image-headers">
         <div className="text-uploadheader">
           <h1>รูปสำหรับเมนูหลัก</h1>
@@ -28,8 +41,6 @@ function ManageHome() {
         </div>
         <ImageUploads id="main-image" onImageChange={handleImageChange} />
       </div>
-
-      {/* อัพรูปอาหารแนะนำ */}
       <div className="image-rec">
         <div className="text-recs">
           <h1>รูปเมนูแนะนำ</h1>
@@ -42,14 +53,41 @@ function ManageHome() {
             <input type="text" placeholder='ราคา' />
           </div>
         </div>
+      
       </div>
-
-      {/* ปุ่มบันทึกข้อมูล */}
+      <div className="create-tables">
+        <div className="text-tables">
+        <h1>รูปเมนูแนะนำ</h1>
+          <h2>อัพโหลดรูปภาพที่ใช้เป็นภาพเมนูแนะนำ</h2>
+        </div>
+        <div className="inputs-table">
+            <input
+              type="text"
+              value={inputTables}
+              onChange={(e) => setInputTables(e.target.value)}
+              placeholder="กรอกจำนวนโต๊ะ"
+              min="0"
+            />
+            <button onClick={handleSetTables} >
+              <Plus /> สร้าง
+            </button>
+        </div>
+      
+        </div>
       <div className="btn-savehome">
         <button onClick={handleSubmit}>บันทึกข้อมูล</button>
       </div>
+      <div className="btn-table">
+          {tables.map((id) => (
+            <div key={id} className="table-box">
+              <button className='table-id'
+                onClick={() => console.log(`โต๊ะ ${id}`)}>{id}</button>
+            </div>
+          ))}
+        </div>
+
     </div>
   )
 }
 
-export default ManageHome
+export default SettingsHome

@@ -16,13 +16,8 @@ interface NavProps {
   openCart: () => void;
 }
 
-
 const Nav: FC<NavProps> = ({ openCart }) => {
   const location = useLocation();
-
-
-
-
   const isHome = location.pathname === "/";
 
   return (
@@ -35,7 +30,6 @@ const Nav: FC<NavProps> = ({ openCart }) => {
             <li><Link to="/"><Home /> Home</Link></li>
             <li><Link to="/menu"><PizzaIcon /> Menu</Link></li>
             <li><Link to="/tables"><UtensilsCrossed /> Table</Link></li>
-            <li><Link to="/manage"><ClipboardList /> Manage</Link></li>
           </ul>
         </div>
 
@@ -47,9 +41,9 @@ const Nav: FC<NavProps> = ({ openCart }) => {
         {/* เมนูขวา */}
         <div className="menus">
           <ul className="items">
-          <li onClick={openCart}>
-          <span className="nav-item-btn"><ShoppingCart /> Cart</span>
-        </li>
+            <li onClick={openCart}>
+              <span className="nav-item-btn"><ShoppingCart /> Cart</span>
+            </li>
 
             <li className="dropdown">
               <div className="dropdown-btn"><User /> User</div>

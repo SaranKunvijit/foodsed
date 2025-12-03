@@ -1,11 +1,11 @@
 import { ImagePlus, Package, Pizza } from "lucide-react";
-import "./ManagePageCss/ManageFoods.css";
+import "../ManagePage/SettingsPageCss/SettingsFoods.css";
 import { useState, type ChangeEvent } from "react";
 import { foodsData } from './foodData'
 import TableComponent from "../../../Components/TableComponent/TableComponent";
 import DialogComponent from "../../../Components/DialogComponent/DialogComponent";
 
-function ManageFoods() {
+function SettingsFoods() {
   const [openCatagory, setOpenCatagory] = useState(false)
   const [newCatagory, setNewCatagory] = useState('')
   const [editItem, setEditItem] = useState<any>(null)
@@ -52,7 +52,7 @@ function ManageFoods() {
     setDeleteId(id)
     setOpen(true)
   }
-  const hanleDeleteCat = (id: string) =>{
+  const hanleDeleteCat = (id: string) => {
     setDeleteCategoryId(id);
     setOpenDeleteCategory(true)
   }
@@ -136,7 +136,7 @@ function ManageFoods() {
           ) : (
             <button onClick={() => document.getElementById('imageUpload')?.click()}
               className="btn-edit"
-              >
+            >
               <ImagePlus size={50} className="icon-img" />
             </button>
           )}
@@ -187,16 +187,16 @@ function ManageFoods() {
         </div>
       </DialogComponent>
       <DialogComponent
-  open={openDeleteCategory}
-  title="ลบประเภทสินค้า"
-  onClose={() => {
-    setOpenDeleteCategory(false);
-    setDeleteCategoryId(null);
-  }}
-  onConfirm={confirmDeleteCategory}
->
-  <p>คุณต้องการลบประเภทสินค้านี้ และรายการอาหารที่อยู่ในหมวดนี้ทั้งหมดใช่ไหม?</p>
-</DialogComponent>
+        open={openDeleteCategory}
+        title="ลบประเภทสินค้า"
+        onClose={() => {
+          setOpenDeleteCategory(false);
+          setDeleteCategoryId(null);
+        }}
+        onConfirm={confirmDeleteCategory}
+      >
+        <p>คุณต้องการลบประเภทสินค้านี้ และรายการอาหารที่อยู่ในหมวดนี้ทั้งหมดใช่ไหม?</p>
+      </DialogComponent>
 
       <div className="foods-headers">
         <div className="texts-header">
@@ -216,11 +216,11 @@ function ManageFoods() {
               ))}
             </select>
             <button onClick={() => setOpenCatagory(true)}><Package />  เพิ่มประเภทสินค้า</button>
-           
-               <button><Pizza />เพิ่มอาหาร</button>
-              
-           
-           
+
+            <button><Pizza />เพิ่มอาหาร</button>
+
+
+
 
           </div>
         </div>
@@ -240,7 +240,7 @@ function ManageFoods() {
                     onDelete={handleDelete}
                     onAddFood={handleAddFoods}
                     onDeleteCatagory={() => hanleDeleteCat(cat.id)}
-                    
+
                   />
                 </div>
 
@@ -281,4 +281,4 @@ function ManageFoods() {
   );
 }
 
-export default ManageFoods;
+export default SettingsFoods;

@@ -68,10 +68,8 @@ const AllFood:FC<AllFoodProps> =({handleAddCart})=> {
               ))}
             </div>
             </div>
-            
           </div>
         ))}
-
       </div>
     </div>
   )
