@@ -194,3 +194,17 @@
   .btn-table .table-box button:active {
     transform: scale(0.95);
   }
+  .input-all {
+    display: flex;
+    flex-direction: column;
+    gap: 0;       
+    line-height: 0;
+    margin: 0;
+    padding: 0;
+}
+
+  .input-all span{
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--hover-color);
+  }

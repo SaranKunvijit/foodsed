@@ -15,6 +15,7 @@ function SettingsHome() {
       return
     }
     setTableTotal(numbers)
+    localStorage.setItem('itemTotal',String(numbers))
     setInputTables('')
   }
   const handleSubmit = () => {
@@ -60,7 +61,8 @@ function SettingsHome() {
         <h1>รูปเมนูแนะนำ</h1>
           <h2>อัพโหลดรูปภาพที่ใช้เป็นภาพเมนูแนะนำ</h2>
         </div>
-        <div className="inputs-table">
+        <div className="input-all">
+           <div className="inputs-table">
             <input
               type="text"
               value={inputTables}
@@ -71,12 +73,20 @@ function SettingsHome() {
             <button onClick={handleSetTables} >
               <Plus /> สร้าง
             </button>
+         
+           
         </div>
+           <div className="all-table">
+               <p><span>{tableTotal} </span>โต๊ะ</p>
+            </div>
+        </div>
+       
       
         </div>
       <div className="btn-savehome">
         <button onClick={handleSubmit}>บันทึกข้อมูล</button>
       </div>
+      
       <div className="btn-table">
           {tables.map((id) => (
             <div key={id} className="table-box">
