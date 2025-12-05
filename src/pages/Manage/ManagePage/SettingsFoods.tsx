@@ -1,7 +1,7 @@
 import { ImagePlus, Package, Pizza } from "lucide-react";
 import "../ManagePage/SettingsPageCss/SettingsFoods.css";
 import { useState, type ChangeEvent } from "react";
-import { foodsData } from './foodData'
+import { foodsData } from '../../../types/foodData'
 import TableComponent from "../../../Components/TableComponent/TableComponent";
 import DialogComponent from "../../../Components/DialogComponent/DialogComponent";
 
@@ -12,12 +12,12 @@ function SettingsFoods() {
   const [editImage, setEditImage] = useState('')
   const [editName, setEditName] = useState('')
   const [editPrice, setEditPrice] = useState('')
-  const [deleteId, setDeleteId] = useState<string | null>(null)
+  const [deleteId, setDeleteId] = useState<number | null>(null)
   const [open, setOpen] = useState(false)
   const [openEdit, setOpenEdit] = useState(false)
-  const [selectType, setSelectype] = useState<string>("");
+  const [selectType, setSelectype] = useState<number>(0);
   const [foods, setFoods] = useState(foodsData)
-  const [deleteCategoryId, setDeleteCategoryId] = useState<string | null>(null)
+  const [deleteCategoryId, setDeleteCategoryId] = useState<number | null>(null)
   const [openDeleteCategory, setOpenDeleteCategory] = useState(false)
 
 
@@ -25,14 +25,14 @@ function SettingsFoods() {
     foods.filter((f) => f.type === typeName);
 
   const [catagoryFood, setCatagoryFood] = useState([
-    { id: "1", name: "ส้มตำ" },
-    { id: "2", name: "ลาบ/ยำ" },
-    { id: "3", name: "ทอด/ย่าง" },
-    { id: "4", name: "ตามสั่ง" },
+    { id: 1, name: "ส้มตำ" },
+    { id: 2, name: "ลาบ/ยำ" },
+    { id: 3, name: "ทอด/ย่าง" },
+    { id: 4, name: "ตามสั่ง" },
   ])
 
 
-  const totalFoods = selectType === "" ? foods.length : foods.filter((f) => f.type === catagoryFood.find((c) => c.id === selectType)?.name).length;
+  const totalFoods = selectType === 0 ? foods.length : foods.filter((f) => f.type === catagoryFood.find((c) => c.id === selectType)?.name).length;
   const handleEdit = (food: any) => {
     setEditItem(food)
     setEditName(food.name)
@@ -48,11 +48,11 @@ function SettingsFoods() {
     setOpenEdit(false)
     setEditItem(null)
   }
-  const handleDelete = (id: string) => {
+  const handleDelete = (id: number) => {
     setDeleteId(id)
     setOpen(true)
   }
-  const hanleDeleteCat = (id: string) => {
+  const hanleDeleteCat = (id: number) => {
     setDeleteCategoryId(id);
     setOpenDeleteCategory(true)
   }
@@ -78,16 +78,18 @@ function SettingsFoods() {
     }
   }
 
-  const handleAddFoods = (typeName: string, image: string, name: string, price: number) => {
+  const handleAddFoods = (image: string, name: string, price: number, type:string,qty:number) => {
     const newFoods = {
-      id: (foods.length + 1).toString(),
+      id: foods.length + 1,
       image,
       name,
       price,
-      type: typeName
+      type,
+      qty
     }
     setFoods([...foods, newFoods])
   }
+
 
   return (
     <div>
@@ -166,7 +168,7 @@ function SettingsFoods() {
         }}
         onConfirm={() => {
           if (newCatagory.trim() !== '') {
-            const newId = (catagoryFood.length + 1).toString()
+            const newId = catagoryFood.length + 1
             const newItem = { id: newId, name: newCatagory };
 
             setCatagoryFood([...catagoryFood, newItem])
@@ -207,7 +209,7 @@ function SettingsFoods() {
 
           <div className="btn-createselect">
             <select value={selectType}
-              onChange={(e) => setSelectype(e.target.value)}>
+              onChange={(e) => setSelectype(Number(e.target.value))}>
               <option value="">รายการทั้งหมด</option>
               {catagoryFood.map((catagory) => (
                 <option key={catagory.id} value={catagory.id}>
@@ -226,13 +228,14 @@ function SettingsFoods() {
         </div>
 
 
-        {selectType === "" && (
+        {selectType === 0 && (
           <div className="table-show">
             {catagoryFood.map((cat) => {
               const list = foodsByType(cat.name);
               return (
                 <div>
                   <TableComponent
+                    id={cat.id}
                     key={cat.id}
                     title={cat.name}
                     foods={list}
@@ -249,7 +252,7 @@ function SettingsFoods() {
           </div>
         )}
 
-        {selectType !== "" && (
+        {selectType !== 0 && (
           <div className="table-show">
             {(() => {
               const selectCatagory = catagoryFood.find(
@@ -261,7 +264,7 @@ function SettingsFoods() {
               return (
                 <div>
                   <TableComponent
-
+                    id={selectCatagory.id}
                     title={selectCatagory.name}
                     foods={list}
                     onEdit={handleEdit}

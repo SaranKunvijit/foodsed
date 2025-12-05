@@ -3,7 +3,6 @@ type TablesProps = {
   tableTotal: number
 }
 function Tables({ tableTotal }: TablesProps) {
-  // const [tableTotal, setTableTotal] =useState(0)
 
   const tables = Array.from({ length: tableTotal }, (_, i) => i + 1);
   return (

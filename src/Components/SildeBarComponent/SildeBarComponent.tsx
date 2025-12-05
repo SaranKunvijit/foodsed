@@ -1,35 +1,21 @@
 import type { FC } from "react";
 import "./SildeBarComponent.css";
 import { Trash2, X } from "lucide-react";
-import type React from "react";
+import type { SildeBarComponentProps } from "../../types";
 
-type CartItmes = {
-  id: number
-  image: string
-  name: string
-  price: number
-  qty: number
-}
-type SildeBarComponentProps = {
-  isOpen: boolean
-  onClose: () => void
-  cartItem: CartItmes[]
-  setCartItem: React.Dispatch<React.SetStateAction<CartItmes[]>>
-
-}
 const SildeBarComponent: FC<SildeBarComponentProps> = ({ isOpen, onClose, cartItem, setCartItem }) => {
   const handleIncrese = (id: number) => {
     setCartItem(prev =>
-      prev.map(item => item.id === id ? { ...item, qty: item.qty + 1 } : item)
+      prev.map(item => item.id === id ? { ...item, qty: (item.qty ?? 1) + 1 } : item)
     )
   }
   const handleDecline = (id: number) => {
     setCartItem(prev =>
-      prev.map(item => item.id === id ? { ...item, qty: Math.max(item.qty - 1, 1) } : item)
+      prev.map(item => item.id === id ? { ...item, qty: Math.max((item.qty ?? 1) - 1, 1) } : item)
     )
   }
   const totalPrice = cartItem.reduce((total, item) => {
-    return total + item.price * item.qty;
+    return total + item.price * (item.qty ?? 1);
   }, 0)
 
   const handleDeleteItem = (id: number) => {
@@ -65,10 +51,10 @@ const SildeBarComponent: FC<SildeBarComponentProps> = ({ isOpen, onClose, cartIt
                     <img src={item.image} alt={item.name} className="cart-image" />
                     <div className="cart-detail">
                       <p>{item.name}</p>
-                      <p className="cart-price">รวม {item.price * item.qty} ฿</p>
+                      <p className="cart-price">รวม {item.price * (item.qty ?? 1)} ฿</p>
                       <div className="btn-qty">
                         <p onClick={() => handleDecline(item.id)} className="increse">-</p>
-                        <span>{item.qty}</span>
+                        <span>{item.qty ?? 1}</span>
                         <p onClick={() => handleIncrese(item.id)} className="decline">+</p>
                       </div>
 

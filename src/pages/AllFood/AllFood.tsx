@@ -1,6 +1,6 @@
 import { useState, type FC } from 'react'
 import './AllFood.css'
-import { foodsData } from '../Manage/ManagePage/foodData'
+import { foodsData } from '../../types/foodData'
 import CardComponent from '../../Components/CardComponent/CardComponent';
 
 type AllFoodProps = {
@@ -14,13 +14,13 @@ const AllFood:FC<AllFoodProps> =({handleAddCart})=> {
 
   const allType = ['ทั้งหมด', ...new Set(foodsData.map(item => item.type))];
   const fillterType = selectTypeFoods === 'ทั้งหมด' ? foods : foods.filter(item => item.type === selectTypeFoods);
-  const handleIncrese = (id: any) => {
+  const handleIncrese = (id: number) => {
     setAddCart(prev => prev.map(item => item.id === id ? { ...item, total: item.total + 1 } : item))
   }
-  const handleDecline = (id: any) => {
+  const handleDecline = (id: number) => {
     setAddCart(prev => prev.map(item => item.id === id && item.total > 1 ? { ...item, total: item.total - 1 } : item))
   }
-  const getTotal = (id: any) => {
+  const getTotal = (id: number) => {
     const items = addCart.find(c => c.id === id)
     return items ? items.total : 1;
   }
@@ -55,14 +55,18 @@ const AllFood:FC<AllFoodProps> =({handleAddCart})=> {
               <div className="header-card">
               {groupedMenus[type].map((menu) => (
                 <CardComponent
+                data={{
+                  id:menu.id,
+                  image:menu.image,
+                  name:menu.name,
+                  price:menu.price,
+                  qty:getTotal(menu.id),
+                  type:menu.type
+                }}               
                   key={menu.id}
-                  img={menu.image}
-                  title={menu.name}
-                  price={menu.price}
-                  qty={getTotal(menu.id)}
                   onIncrese={() => handleIncrese(menu.id)}
                   onDecline={() => handleDecline(menu.id)}
-                  addCart={(qty) => handleAddCart( menu, qty)}
+                  addCart={(qty) => handleAddCart( menu, qty ?? 1)}
 
                 />
               ))}

@@ -1,7 +1,6 @@
 import "./nav.css";
 import logo from "../../assets/logo-res.png";
 import {
-  ClipboardList,
   LogOut,
   Settings,
   ShoppingCart,

@@ -9,7 +9,6 @@ type SettingsProps = {
   setTableTotal: React.Dispatch<React.SetStateAction<number>>
 }
 function SettingsHome({tableTotal,setTableTotal}:SettingsProps) {
- // const [tableTotal, setTableTotal] = useState(0)
   const [inputTables, setInputTables] = useState('')
   const tables = Array.from({ length: tableTotal }, (_, i) => i + 1)
 
@@ -20,7 +19,6 @@ function SettingsHome({tableTotal,setTableTotal}:SettingsProps) {
       return
     }
     setTableTotal(numbers)
-   // localStorage.setItem('itemTotal',String(numbers))
     setInputTables('')
   }
   const handleSubmit = () => {

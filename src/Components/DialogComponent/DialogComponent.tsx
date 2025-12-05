@@ -1,14 +1,6 @@
-import type { FC, ReactNode } from "react"
+import type { FC } from "react"
 import './DialogComponent.css'
-
-type DialogComponentProps = {
-    open:boolean
-    title:string
-    children:ReactNode
-    onClose: () => void
-    onConfirm: () => void
-}
-
+import type { DialogComponentProps } from "../../types"
 const DialogComponent:FC<DialogComponentProps> = ({open, title, children, onClose, onConfirm}) => {
     if(!open) return null
 

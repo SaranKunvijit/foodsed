@@ -1,13 +1,7 @@
-import { Camera, ImagePlus } from 'lucide-react'
+import { ImagePlus } from 'lucide-react'
 import React, { useId, useState, type FC } from 'react'
 import './ImageUploads.css'
-
-type ImageUploadsComponentProps = {
-  id?: string   // ✅ เพิ่ม id ที่ส่งจาก parent ได้
-  label?: string
-  onImageChange?: (file: File | null, imageURL: string | null) => void
-}
-
+import type { ImageUploadsComponentProps } from '../../types'
 const ImageUploads: FC<ImageUploadsComponentProps> = ({ id, label = "เลือกรูปภาพ", onImageChange }) => {
   const [preview, setPreview] = useState<string | null>(null)
   const generatedId = useId()               

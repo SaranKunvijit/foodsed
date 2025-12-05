@@ -1,23 +1,10 @@
 import { ImagePlus, PencilLine, Pizza, Trash2 } from "lucide-react";
 import React, { useState, type FC } from "react";
 import "./TableComponent.css";
-type Food = {
-  id: string;
-  image: string;
-  name: string;
-  price: number;
-  type: string;
-};
-type TableProps = {
-  title: string;
-  foods: Food[];
-  onEdit: (food: Food) => void;
-  onDelete: (id: string) => void;
-  onAddFood: (id: string, image: string, name: string, price: number) => void;
-  onDeleteCatagory: (id: string) => void;
-};
+import type { TableProps } from "../../types";
 
 const TableComponent: FC<TableProps> = ({
+  id,
   title,
   foods,
   onEdit,
@@ -30,16 +17,18 @@ const TableComponent: FC<TableProps> = ({
   const [adding, setAdding] = useState(false);
   const [newFoodName, setNewFoodName] = useState("");
   const [newPrice, setNewPrice] = useState("");
+  const [qtys, setQtys] = useState(0)
 
 
   const handleAddFood = () => setAdding(true);
   const handleSaveNewFood = () => {
     if (newFoodName.trim() && newPrice) {
-      onAddFood(title, newImage, newFoodName, Number(newPrice));
+      onAddFood(newImage, newFoodName, Number(newPrice),title, qtys);
       setAdding(false);
       setNewFoodName("");
       setNewPrice("");
       setNewImage('');
+      setQtys(0)
     }
   };
 
@@ -57,7 +46,7 @@ const TableComponent: FC<TableProps> = ({
         <h2>{title}</h2>
         <div className="add-removebtn">
           <button onClick={handleAddFood}><Pizza />เพิ่มสินค้า</button>
-          <button className="remove-cat" onClick={() => onDeleteCatagory(title)}><Trash2 />ลบประเภทสินค้า</button>
+          <button className="remove-cat" onClick={() => onDeleteCatagory(id)}><Trash2 />ลบประเภทสินค้า</button>
         </div>
 
 
