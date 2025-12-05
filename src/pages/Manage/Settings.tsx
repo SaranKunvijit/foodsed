@@ -1,9 +1,14 @@
 import { useState } from 'react'
 import './Settings.css'
-import { Home, Pizza, UtensilsCrossed } from 'lucide-react'
+import { Home, Pizza } from 'lucide-react'
 import SettingsHome from './ManagePage/SettingsHome'
 import SettingsFoods from './ManagePage/SettingsFoods'
-function Settings() {
+
+type SettingsProps ={
+  tableTotal: number
+  setTableTotal: React.Dispatch<React.SetStateAction<number>>
+}
+function Settings({tableTotal, setTableTotal}:SettingsProps) {
   const [activeTab, setActiveTab] = useState<'home' | 'table' | 'foods'>('home')
 
   const HeadersText = () => {
@@ -19,7 +24,10 @@ function Settings() {
 
   const renderComponent = () => {
     switch (activeTab) {
-      case 'home': return <SettingsHome />
+      case 'home': return <SettingsHome 
+      tableTotal={tableTotal}
+      setTableTotal={setTableTotal}
+      />
       case 'foods': return <SettingsFoods />
     }
   }

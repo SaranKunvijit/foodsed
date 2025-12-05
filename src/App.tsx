@@ -16,7 +16,7 @@ type CartItemProps = {
 }
 
 const App: FC<CartItemProps> = () => {
-
+  const [tableTotal, setTableTotal] = useState(0)
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [cartItem, setCartItem] = useState<CartItemProps[]>([]);
   const handleAddCart = (menu: any, qty: number) => {
@@ -42,9 +42,10 @@ const App: FC<CartItemProps> = () => {
 
       <Routes>
         <Route path="/" element={<Home handleAddCart={handleAddCart} />} />
-        <Route path="/settings" element={<Settings />} />
+        <Route path="/settings" element={<Settings tableTotal={tableTotal}
+      setTableTotal={setTableTotal} />} />
         <Route path="/menu" element={<AllFood handleAddCart={handleAddCart} />} />
-        <Route path="/tables" element={<Tables />} />
+        <Route path="/tables" element={<Tables tableTotal={tableTotal} />} />
 
       </Routes>
     </Router>

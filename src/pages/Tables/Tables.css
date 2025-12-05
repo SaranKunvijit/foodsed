@@ -1,10 +1,25 @@
+
+.container-table{
+  display: flex;
+  justify-content: space-between;
+
+}
+.table-menu{
+  display: grid;
+    gap: 15px;
+    padding: 2rem 3rem;
+    justify-content: start;
+    margin-top: 5%;
+}
 .btn-tables {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 15px;
-    padding: 2rem 2rem;
+    padding: 2rem 3rem;
     justify-content: center;
     margin-top: 5%;
+    max-height: 650px;
+    overflow-y: auto;
   }
   
   .btn-tables .table-boxs button {

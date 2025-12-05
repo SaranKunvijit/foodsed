@@ -1,10 +1,15 @@
 
-import { useState } from 'react'
+import React, { useState } from 'react'
 import ImageUploads from '../../../Components/ImageUploads/ImageUploads'
 import '../ManagePage/SettingsPageCss/SettingsHome.css'
 import { Plus } from 'lucide-react'
-function SettingsHome() {
-  const [tableTotal, setTableTotal] = useState(0)
+
+type SettingsProps = {
+  tableTotal: number
+  setTableTotal: React.Dispatch<React.SetStateAction<number>>
+}
+function SettingsHome({tableTotal,setTableTotal}:SettingsProps) {
+ // const [tableTotal, setTableTotal] = useState(0)
   const [inputTables, setInputTables] = useState('')
   const tables = Array.from({ length: tableTotal }, (_, i) => i + 1)
 
@@ -15,7 +20,7 @@ function SettingsHome() {
       return
     }
     setTableTotal(numbers)
-    localStorage.setItem('itemTotal',String(numbers))
+   // localStorage.setItem('itemTotal',String(numbers))
     setInputTables('')
   }
   const handleSubmit = () => {

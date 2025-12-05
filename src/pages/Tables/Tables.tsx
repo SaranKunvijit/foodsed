@@ -1,20 +1,24 @@
-import React, { useEffect, useState } from 'react'
+import './Tables.css'
+type TablesProps = {
+  tableTotal: number
+}
+function Tables({ tableTotal }: TablesProps) {
+  // const [tableTotal, setTableTotal] =useState(0)
 
-function Tables() {
-const [tableTotal, setTableTotal] =useState(0)
-useEffect(() => {
-  const num = localStorage.getItem("tableTotal");
-  if (num) setTableTotal(Number(num));
-}, [])
-const tables = Array.from({ length: tableTotal }, (_, i) => i + 1);
+  const tables = Array.from({ length: tableTotal }, (_, i) => i + 1);
   return (
-    <div className="btn-table">
+    <div className="container-table">
+       <div className="btn-tables">
       {tables.map((id) => (
+        <div className="table-boxs"> 
         <button key={id} className="table-id">
           โต๊ะ {id}
-        </button>
+        </button></div>
+
       ))}
     </div>
+    </div>
+   
   )
 }
 
