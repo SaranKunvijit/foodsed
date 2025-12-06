@@ -6,30 +6,25 @@ import Tables from "./pages/Tables/Tables"
 import SildeBarComponent from "./Components/SildeBarComponent/SildeBarComponent"
 import { useState, type FC } from "react"
 import Settings from "./pages/Manage/Settings"
+import type { ItemsProps } from "./types"
 
-type CartItemProps = {
-  id: number;
-  name: string;
-  price: number;
-  image: string;
-  qty: number;
-}
-
-const App: FC<CartItemProps> = () => {
+const App: FC = () => {   // ✅ แก้ตรงนี้
   const [tableTotal, setTableTotal] = useState(0)
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [cartItem, setCartItem] = useState<CartItemProps[]>([]);
+  const [cartItem, setCartItem] = useState<ItemsProps[]>([]);
+
   const handleAddCart = (menu: any, qty: number) => {
-    setCartItem((prev) => {
-      const exits = prev.find((item) => item.id === menu.id)
-      if (exits) {
-        return prev.map((item) =>
-          item.id === menu.id ? { ...item, qty: item.qty + qty } : item
+    setCartItem(prev => {
+      const exists = prev.find(item => item.id === menu.id)
+      if (exists) {
+        return prev.map(item =>
+          item.id === menu.id ? { ...item, qty: (item.qty ?? 1) + qty } : item
         )
       }
-      return [...prev, { ...menu, qty }]
+      return [...prev, { ...menu, qty, type: menu.type??'ทั่วไป' }]
     })
   }
+
   return (
     <Router>
       <SildeBarComponent
@@ -42,11 +37,11 @@ const App: FC<CartItemProps> = () => {
 
       <Routes>
         <Route path="/" element={<Home handleAddCart={handleAddCart} />} />
-        <Route path="/settings" element={<Settings tableTotal={tableTotal}
-      setTableTotal={setTableTotal} />} />
+        <Route path="/settings" element={
+          <Settings tableTotal={tableTotal} setTableTotal={setTableTotal} />
+        } />
         <Route path="/menu" element={<AllFood handleAddCart={handleAddCart} />} />
         <Route path="/tables" element={<Tables tableTotal={tableTotal} />} />
-
       </Routes>
     </Router>
   )

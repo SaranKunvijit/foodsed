@@ -5,6 +5,7 @@ import card1 from "../../assets/image.png";
 import "./home.css";
 import { useState, type FC } from "react";
 import CardComponent from "../../Components/CardComponent/CardComponent";
+import type { ItemsProps } from "../../types";
 
 type HomeProps = {
   handleAddCart: (menu: any, qty: number) => void;
@@ -17,28 +18,24 @@ const Home: FC<HomeProps> = ({ handleAddCart }) => {
     { id: 4, name: "อาหารตามสั่ง", detail: "รายละเอียด", image: card1 },
   ];
 
-  const [recommendMenus, setRecommendMenus] = useState([
-    { id: 1, name: "ต้มแซ่บกระดูกอ่อน", price: 200, total: 1, image: card },
-    { id: 2, name: "กะเพราเนื้อ", price: 80, total: 1, image: card },
-    { id: 3, name: "ผัดไทยกุ้งสด", price: 90, total: 1, image: card },
-    { id: 4, name: "ข้าวมันไก่", price: 60, total: 1, image: card },
+  const [recommendMenus, setRecommendMenus] = useState<ItemsProps[]>([
+    { id: 1, name: "ต้มแซ่บกระดูกอ่อน", price: 200, qty: 1, image: card, type: "แนะนำ" },
+    { id: 2, name: "กะเพราเนื้อ", price: 80, qty: 1, image: card, type: "แนะนำ" },
   ]);
 
-  const [bestSellers, setBestSellers] = useState([
-    { id: 1, name: "ข้าวผัดกุ้ง", price: 75, total: 1, image: card },
-    { id: 2, name: "ราดหน้าเนื้อ", price: 95, total: 1, image: card },
-    { id: 3, name: "ก๋วยเตี๋ยวต้มยำ", price: 70, total: 1, image: card },
-    { id: 4, name: "หมูกระเทียม", price: 85, total: 1, image: card },
+  const [bestSellers, setBestSellers] = useState<ItemsProps[]>([
+    { id: 1, name: "ข้าวผัดกุ้ง", price: 75, qty: 1, image: card, type: "ยอดฮิต" },
+    { id: 2, name: "ราดหน้าเนื้อ", price: 95, qty: 1, image: card, type: "ยอดฮิต" },
   ]);
 
-  const handleIncrese = (id: number, type: any) => {
+  const handleIncrese = (id: number, type: string) => {
     if (type === 'recommendMenus') {
       setRecommendMenus((prev) => prev.map((menu) =>
-        menu.id === id ? { ...menu, total: menu.total + 1 } : menu
+        menu.id === id ? { ...menu, qty: (menu.qty ?? 1) + 1 } : menu
       ))
     } else if (type === 'bestSellers') {
       setBestSellers((prev) => prev.map((menu) =>
-        menu.id === id ? { ...menu, total: menu.total + 1 } : menu
+        menu.id === id ? { ...menu, qty: (menu.qty ?? 1) + 1 } : menu
       ))
     }
   }
@@ -46,11 +43,11 @@ const Home: FC<HomeProps> = ({ handleAddCart }) => {
   const handleDecline = (id: number, type: any) => {
     if (type === 'recommendMenus') {
       setRecommendMenus((prev) => prev.map((menu) =>
-        menu.id === id && menu.total > 1 ? { ...menu, total: menu.total - 1 } : menu
+        menu.id === id && (menu.qty ?? 1) > 1 ? { ...menu, qty: (menu.qty ?? 1) - 1 } : menu
       ))
     } else if (type === 'bestSellers') {
       setBestSellers((prev) => prev.map((menu) =>
-        menu.id === id && menu.total > 1 ? { ...menu, total: menu.total - 1 } : menu
+        menu.id === id && (menu.qty ?? 1) > 1 ? { ...menu, qty: (menu.qty ?? 1) - 1 } : menu
       ))
     }
   }
@@ -98,13 +95,10 @@ const Home: FC<HomeProps> = ({ handleAddCart }) => {
 
             <CardComponent
               key={menu.id}
-              img={menu.image}
-              title={menu.name}
-              price={menu.price}
-              qty={menu.total}
+             data={menu}
               onIncrese={() => handleIncrese(menu.id, 'recommendMenus')}
               onDecline={() => handleDecline(menu.id, 'recommendMenus')}
-              addCart={(qty) => handleAddCart(menu, qty)
+              addCart={(qty) => handleAddCart(menu, qty ?? 1)
               }
             />
           ))}
@@ -120,13 +114,10 @@ const Home: FC<HomeProps> = ({ handleAddCart }) => {
           {bestSellers.map((menu) => (
             <CardComponent
               key={menu.id}
-              img={menu.image}
-              title={menu.name}
-              price={menu.price}
-              qty={menu.total}
+              data={menu}
               onIncrese={() => handleIncrese(menu.id, 'bestSellers')}
               onDecline={() => handleDecline(menu.id, 'bestSellers')}
-              addCart={(qty) => handleAddCart(menu, qty)
+              addCart={(qty) => handleAddCart(menu, qty ?? 1)
               }
             />
           ))}
