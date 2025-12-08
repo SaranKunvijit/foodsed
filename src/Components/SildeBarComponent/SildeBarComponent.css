@@ -54,6 +54,7 @@
 .cart-item {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   margin-bottom: 1rem;
   padding: 0.5rem;
   border-radius: 10px;
@@ -162,12 +163,15 @@
   font-weight: 700;
   color: var(--remove-color);
 }
-.delete-item{
-  position: fixed;
-  display: flex;
-  justify-content: end;
-  margin-left: 75%;
+
+.delete-item {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    padding-right: 20px;
+    
 }
+
 .remove{
   color: var(--remove-color);
   cursor: pointer;

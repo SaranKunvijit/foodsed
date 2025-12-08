@@ -1,8 +1,10 @@
+import { useState } from 'react';
 import './Tables.css'
 type TablesProps = {
   tableTotal: number
 }
 function Tables({ tableTotal }: TablesProps) {
+  const [selectedTable, setSelectedTable] = useState<number | null>(null)
 
   const tables = Array.from({ length: tableTotal }, (_, i) => i + 1);
   return (
@@ -10,7 +12,7 @@ function Tables({ tableTotal }: TablesProps) {
        <div className="btn-tables">
       {tables.map((id) => (
         <div className="table-boxs"> 
-        <button key={id} className="table-id">
+        <button key={id} className={`table-id ${selectedTable===id ? 'active': ''}`} onClick={() => setSelectedTable(id)}>
           โต๊ะ {id}
         </button></div>
 

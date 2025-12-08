@@ -20,12 +20,16 @@ const Home: FC<HomeProps> = ({ handleAddCart }) => {
 
   const [recommendMenus, setRecommendMenus] = useState<ItemsProps[]>([
     { id: 1, name: "ต้มแซ่บกระดูกอ่อน", price: 200, qty: 1, image: card, type: "แนะนำ" },
-    { id: 2, name: "กะเพราเนื้อ", price: 80, qty: 1, image: card, type: "แนะนำ" },
+    { id: 2, name: "ตำไทย", price: 80, qty: 1, image: card, type: "แนะนำ" },
+    { id: 3, name: "ลาบเป็ด", price: 80, qty: 1, image: card, type: "แนะนำ" },
+    { id: 4, name: "คอหมอย่าง", price: 80, qty: 1, image: card, type: "แนะนำ" },
   ]);
 
   const [bestSellers, setBestSellers] = useState<ItemsProps[]>([
     { id: 1, name: "ข้าวผัดกุ้ง", price: 75, qty: 1, image: card, type: "ยอดฮิต" },
     { id: 2, name: "ราดหน้าเนื้อ", price: 95, qty: 1, image: card, type: "ยอดฮิต" },
+    { id: 3, name: "ราดหน้าเนื้อ", price: 95, qty: 1, image: card, type: "ยอดฮิต" },
+    { id: 4, name: "ราดหน้าเนื้อ", price: 95, qty: 1, image: card, type: "ยอดฮิต" },
   ]);
 
   const handleIncrese = (id: number, type: string) => {
