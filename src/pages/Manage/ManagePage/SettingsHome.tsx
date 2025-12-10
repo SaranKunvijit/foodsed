@@ -18,8 +18,9 @@ function SettingsHome({tableTotal,setTableTotal}:SettingsProps) {
       console.log("กรุณากรอกตัวเลขที่ถูกต้อง")
       return
     }
+  
     setTableTotal(numbers)
-    setInputTables('')
+    setInputTables(String(numbers))
   }
   const handleSubmit = () => {
     alert('บันทึกข้อมูลเรียบร้อยแล้ว')

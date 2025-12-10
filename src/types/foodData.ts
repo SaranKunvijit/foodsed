@@ -49,3 +49,19 @@ export const foodsData = [
     { id: 39, image: images, name: "ผัดผงกะหรี่ทะเล", price: 90, type: "ตามสั่ง", qty: 0 },
     { id: 40, image: images, name: "ทอดกระเทียมหมู", price: 55, type: "ตามสั่ง", qty: 0 },
 ];
+
+
+export const OrderFoods = [
+    { id: 1, image: images, name: "ผัดซีอิ๊วหมู", price: 55, type: "ตามสั่ง", qty: 0 },
+    { id: 2, image: images, name: "กระเพราไก่ไข่ดาว", price: 60, type: "ตามสั่ง", qty: 0 },
+    { id: 3, image: images, name: "ข้าวผัดกุ้ง", price: 65, type: "ตามสั่ง", qty: 0 },
+    { id: 4, image: images, name: "ราดหน้าเส้นใหญ่หมู", price: 55, type: "ตามสั่ง", qty: 0 },
+    { id: 5, image: images, name: "ผัดพริกแกงหมูกรอบ", price: 70, type: "ตามสั่ง", qty: 0 },
+    { id: 6, image: images, name: "ข้าวผัดกระเทียมหมู", price: 55, type: "ตามสั่ง", qty: 0 },
+    { id: 7, image: images, name: "ผัดไทยกุ้งสด", price: 70, type: "ตามสั่ง", qty: 0 },
+    { id: 8, image: images, name: "คะน้าหมูกรอบราดข้าว", price: 60, type: "ตามสั่ง", qty: 0 },
+    { id: 9, image: images, name: "ผัดขี้เมาทะเล", price: 75, type: "ตามสั่ง", qty: 0 },
+    { id: 10, image: images, name: "หมูทอดกระเทียม", price: 60, type: "ตามสั่ง", qty: 0 },
+  ];
+
+  
