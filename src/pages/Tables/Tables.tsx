@@ -6,6 +6,14 @@ type TablesProps = {
 }
 function Tables({ tableTotal }: TablesProps) {
   const [selectedTable, setSelectedTable] = useState<number | null>(null)
+  const [checkedRows, setCheckedRows] = useState<number[]>([]);
+  const toggleRow = (index: number) => {
+    setCheckedRows(prev =>
+      prev.includes(index)
+        ? prev.filter(i => i !== index)
+        : [...prev, index]
+    );
+  };
 
   const tables = Array.from({ length: tableTotal }, (_, i) => i + 1);
   return (
@@ -37,6 +45,42 @@ function Tables({ tableTotal }: TablesProps) {
             <button className='discount'> <Percent />ส่วนลด</button>
             <button className='move'><DoorOpen />ย้ายโต๊ะ</button>
             <button className='removes'><Trash2 /> ลบรายการ</button>
+          </div>
+
+          <div className="show-foods">
+            <table>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>qty</th>
+                  <th>อาหาร</th>
+                  <th>ราคา</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[0, 1, 2,3,4,5,6,7,8,9,10,11].map((row, index) => (
+                  <tr
+                    key={index}
+                    onClick={() => toggleRow(index)}
+                    className={checkedRows.includes(index) ? 'row-active' : ''}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    <th>
+                      <input
+                        type="checkbox"
+                        checked={checkedRows.includes(index)}
+                        onClick={(e) => e.stopPropagation()} 
+                        readOnly
+                      />
+                    </th>
+                    <th>2</th>
+                    <th>ต้มแซ่บ</th>
+                    <th>250฿</th>
+                  </tr>
+                ))}
+
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
