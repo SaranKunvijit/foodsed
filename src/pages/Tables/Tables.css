@@ -132,3 +132,34 @@
 .show-foods tbody tr.row-active:hover {
   background-color: #fafafa;
 }
+.btn-pay-printbill{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  border-top: 1px solid rgba(0, 0, 0, 0.25);
+  padding: 20px 10px;
+  
+}
+.btn-pay-printbill .print{
+  background: var(--text-color);
+  color: white;
+  border-radius: 50px;
+  transition: all 0.4s ease;
+}
+.btn-pay-printbill .print:hover{
+  background-color: var(--bg-color);
+  transform: scaleX(1.05);
+}
+.btn-pay-printbill .pay{
+  background: white;
+  color: var(--text-color);
+  border: 2px solid var(--text-color);
+  border-radius: 50px;
+  transition: all 0.4s ease-in-out;
+}
+.btn-pay-printbill .pay:hover{
+  background-color: var(--text-color);
+  color: white;
+  border: 2px solid var(--text-color);
+  transform: scaleX(1.05);
+}

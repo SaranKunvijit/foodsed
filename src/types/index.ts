@@ -9,7 +9,12 @@ export type ItemsProps = {
   price: number;
   type: string;
 };
-
+export type Food = {
+  id: number
+  name: string
+  price: number
+  qty: number
+}
 export type SildeBarComponentProps = {
   isOpen: boolean;
   onClose: () => void;
