@@ -14,6 +14,7 @@ export type Food = {
   name: string
   price: number
   qty: number
+  tableId:number
 }
 export type SildeBarComponentProps = {
   isOpen: boolean;

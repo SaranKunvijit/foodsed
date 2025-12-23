@@ -52,16 +52,16 @@ export const foodsData = [
 
 
 export const OrderFoods = [
-    { id: 1, image: images, name: "ผัดซีอิ๊วหมู", price: 55, type: "ตามสั่ง", qty: 0 },
-    { id: 2, image: images, name: "กระเพราไก่ไข่ดาว", price: 60, type: "ตามสั่ง", qty: 0 },
-    { id: 3, image: images, name: "ข้าวผัดกุ้ง", price: 65, type: "ตามสั่ง", qty: 0 },
-    { id: 4, image: images, name: "ราดหน้าเส้นใหญ่หมู", price: 55, type: "ตามสั่ง", qty: 0 },
-    { id: 5, image: images, name: "ผัดพริกแกงหมูกรอบ", price: 70, type: "ตามสั่ง", qty: 0 },
-    { id: 6, image: images, name: "ข้าวผัดกระเทียมหมู", price: 55, type: "ตามสั่ง", qty: 0 },
-    { id: 7, image: images, name: "ผัดไทยกุ้งสด", price: 70, type: "ตามสั่ง", qty: 0 },
-    { id: 8, image: images, name: "คะน้าหมูกรอบราดข้าว", price: 60, type: "ตามสั่ง", qty: 0 },
-    { id: 9, image: images, name: "ผัดขี้เมาทะเล", price: 75, type: "ตามสั่ง", qty: 0 },
-    { id: 10, image: images, name: "หมูทอดกระเทียม", price: 60, type: "ตามสั่ง", qty: 0 },
+    { id: 1,  name: "ผัดซีอิ๊วหมู", price: 55, type: "ตามสั่ง", qty: 1, tableId: 2 },
+    { id: 2,  name: "กระเพราไก่ไข่ดาว", price: 60, type: "ตามสั่ง", qty: 2, tableId: 1 },
+    { id: 3,  name: "ข้าวผัดกุ้ง", price: 65, type: "ตามสั่ง", qty: 3, tableId: 3 },
+    { id: 4,  name: "ราดหน้าเส้นใหญ่หมู", price: 55, type: "ตามสั่ง", qty: 4, tableId: 5 },
+    { id: 5,  name: "ผัดพริกแกงหมูกรอบ", price: 70, type: "ตามสั่ง", qty: 1, tableId: 1 },
+    { id: 6,  name: "ข้าวผัดกระเทียมหมู", price: 55, type: "ตามสั่ง", qty: 5, tableId: 2 },
+    { id: 7,  name: "ผัดไทยกุ้งสด", price: 70, type: "ตามสั่ง", qty: 2, tableId: 2 },
+    { id: 8,  name: "คะน้าหมูกรอบราดข้าว", price: 60, type: "ตามสั่ง", qty: 1, tableId: 5 },
+    { id: 9,  name: "ผัดขี้เมาทะเล", price: 75, type: "ตามสั่ง", qty: 2, tableId: 1 },
+    { id: 10, name: "หมูทอดกระเทียม", price: 60, type: "ตามสั่ง", qty: 3, tableId: 2 },
   ];
 
   

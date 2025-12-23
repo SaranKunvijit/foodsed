@@ -3,6 +3,7 @@ import './Tables.css'
 import { DoorOpen, Percent, Plus, Trash2 } from 'lucide-react';
 import type { Food } from '../../types';
 import DialogComponent from '../../Components/DialogComponent/DialogComponent';
+import { OrderFoods, foodsData } from '../../types/foodData';
 type TablesProps = {
   tableTotal: number
 }
@@ -11,32 +12,31 @@ function Tables({ tableTotal }: TablesProps) {
   const [selectedTable, setSelectedTable] = useState<number | null>(null)
   const [open, setOpen] = useState(false)
   const [checedFoodId, setCheckedFoodId] = useState<number[]>([])
-  const [food, setFood] = useState<Food[]>([
-    { id: 1, name: 'ต้มแซ่บ', price: 250, qty: 2 },
-    { id: 2, name: 'ผัดไทย', price: 80, qty: 1 },
-    { id: 3, name: 'ข้าวผัด', price: 60, qty: 1 },
-    { id: 4, name: 'น้ำเปล่า', price: 20, qty: 1 },
-  ])
-  const toggleRow = (index: number) => {
+  const [food, setFood] = useState<Food[]>(OrderFoods)
+  const [search, setSearch] = useState<string>('')
+
+  const toggleRow = (id: number) => {
     setCheckedFoodId(prev =>
-      prev.includes(index)
-        ? prev.filter(i => i !== index)
-        : [...prev, index]
+      prev.includes(id)
+        ? prev.filter(i => i !== id)
+        : [...prev, id]
     );
   };
 
   const totalPrice = food.reduce((sum, item) => {
     return sum + item.qty * item.price
   }, 0)
-  // const handleDeleteFoodsItem = () => {
-  //   if (checedFoodId.length === 0) return
-  //   setFood(prev =>
-  //     prev.filter(food => !checedFoodId.includes(food.id))
-  //   )
-  //   setCheckedFoodId([])
-  // }
-
+  const fillterFoodData = foodsData.filter(item =>
+    item.name.toLowerCase().includes(search.toLowerCase())
+  )
+  const foodByTable = selectedTable === null
+    ? []
+    : food.filter(f => f.tableId === selectedTable)
   const tables = Array.from({ length: tableTotal }, (_, i) => i + 1);
+
+  // const filteredFoods = selectedTable === null
+  // ? [] : food.filter(f =>f.tableId)
+
   return (
     <>
       <DialogComponent
@@ -51,12 +51,48 @@ function Tables({ tableTotal }: TablesProps) {
       >
         <p>ต้องการลบรายการอาหารนี้ใช่หรือไหม ? </p>
       </DialogComponent>
-
+      <div className="search">
+        <input
+          type="text"
+          placeholder="ค้นหาเมนูอาหาร"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+           {search && (
+    
+    <div className="food-dropdown">
+      {fillterFoodData.map(item => (
+        <div className="food-item" key={item.id}
+          onClick={() => {
+            if (selectedTable === null) return
+            setFood(prev => {
+              const exist = prev.find(f => f.id === item.id && f.tableId === selectedTable)
+              if (exist) {
+                return prev.map(f => f.id === item.id && f.tableId === selectedTable ? { ...f, qty: f.qty + 1 } : f)
+              }
+              return [
+                ...prev, {...item, qty:1, tableId:selectedTable }
+              ]
+            })
+            setSearch('')
+          }}>
+              <span>{item.name}</span>
+        </div>
+      ))}
+    </div>
+  )}
+      </div>
       <div className="container-table">
+     
+        
         <div className="btn-tables">
           {tables.map((id) => (
             <div className="table-boxs">
-              <button key={id} className={`table-id ${selectedTable === id ? 'active' : ''}`} onClick={() => setSelectedTable(id)}>
+              <button key={id} className={`table-id ${selectedTable === id ? 'active' : ''}`}
+                onClick={() => {
+                  setSelectedTable(id)
+                  setSearch('')
+                }}>
                 โต๊ะ {id}
               </button></div>
 
